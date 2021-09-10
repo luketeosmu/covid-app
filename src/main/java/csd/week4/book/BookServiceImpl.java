@@ -37,9 +37,10 @@ public class BookServiceImpl implements BookService {
     
     @Override
     public Book updateBook(Long id, Book newBookInfo){
-        return books.findById(id).map(book -> {book.setTitle(newBookInfo.getTitle());
-            return books.save(book);
-        }).orElse(null);
+        return books.findById(id).map(book -> 
+            {book.setTitle(newBookInfo.getTitle());
+                return books.save(book);
+            }).orElse(null);
 
         /*
         // You can also handle Optional objects in this way

@@ -1,6 +1,8 @@
 package csd.week4.review;
 
 import java.util.List;
+
+import org.springframework.data.util.Optionals;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import csd.week4.book.BookNotFoundException;
@@ -39,7 +41,9 @@ public class ReviewController {
         // Hint: using "map" to handle the returned Optional object from "findById(bookId)"
         // your code here
         // need to change the "return null"
-        return null;
+        Book insertedTo = books.findById(bookId).map);
+        review.setBook(insertedTo);
+        return reviews.save(review);
     }
 
     /**
