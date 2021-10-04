@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
 import { useHistory } from 'react-router-dom';
-<<<<<<< HEAD
-
-=======
 import NavBar from "../NavBar";
->>>>>>> fb71253cb2d786d5cb39bb1abf6dc14334874884
 //import Header from "../Header/HeaderLogout";
 
 
@@ -30,10 +26,7 @@ export default function Login() {
 
     return (
         <>
-<<<<<<< HEAD
-=======
         <NavBar />
->>>>>>> fb71253cb2d786d5cb39bb1abf6dc14334874884
         <div className="Login">
         <h1 className="d-flex justify-content-center mt-4">Welcome to COVID</h1>
             <Form onSubmit={handleSubmit}>

@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import Login from "./components/Login/Login.jsx"
 import NavBar from './components/NavBar';
-import EmployeeList from './components/Employees/EmployeeList.jsx';
+import Register from './components/Registration/Registration';
+import EmployeeList from './components/Employees/EmployeeList/EmployeeList';
 
 function App() {
   return (
