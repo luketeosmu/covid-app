@@ -1,6 +1,5 @@
 import React from "react";
 import { Table, Card } from "react-bootstrap";
-import { useTable } from 'react-table';
 import "./EmployeeList.css";
 import NavBar from "../../NavBar/NavBar";
 
