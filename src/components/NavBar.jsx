@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown, Container, DropdownButton, Dropdown } from 'react-bootstrap'
 
 const NavBar = () => {
+    
     return (
         <Navbar collapseOnSelect bg="light" variant="light" expand="lg">
             <Container>
