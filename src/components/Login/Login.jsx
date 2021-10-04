@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
 import { useHistory } from 'react-router-dom';
-import NavBar from "../NavBar";
+import NavBar from "../NavBar/NavBar";
 //import Header from "../Header/HeaderLogout";
 
 

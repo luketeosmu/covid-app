@@ -1,0 +1,10 @@
+@media all and (min-width: 680px) {
+    .PageTitle{
+        padding: 20px;
+    }
+    .Table {
+      padding: 20px;
+      margin: 2rem;
+
+    }
+  }
