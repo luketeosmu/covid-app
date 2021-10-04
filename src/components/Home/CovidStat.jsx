@@ -68,7 +68,7 @@ const CovidStat = () => {
                             Buff Lord decides to go to the gym and the sheer testosterone he exudes caused the virus to leave the body in fear.
                             </Card.Text>
                             <h6>*insert image here*</h6>
-                            <h6>*shaun ting</h6>
+                            <h6>*kang chin shen test*</h6>
                             <a href="">Link to original article</a>
                         </Card.Body>
                         <Card.Footer className="text-muted">Last Updated: 2 days ago</Card.Footer>
