@@ -9,7 +9,7 @@ function EmployeeList() {
         { id: 42069, name: "Otto", status: true },
         { id: 12345, name: "John", status: false },
         { id: 12089, name: "Mary", status: true },
-        { id: 12459, name: "Steve", status: false }
+        { id: 12459, name: "Steve", status: false },
     ]
     return (
         <div>
