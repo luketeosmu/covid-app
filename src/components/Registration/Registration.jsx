@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./Registration.css";
+import NavBar from '../NavBar/NavBar';
 //import Header from "../Header/HeaderLogout";
 
 function Register() {
@@ -19,10 +20,8 @@ function Register() {
     }
 
     return (
-        <>
-        <div className = "PageTitle">
-            <h2> List of Employees </h2>
-        </div>
+        <div>
+        <NavBar />
         <div className="Register">
         <h2 className="d-flex justify-content-center mt-4">Let's start by entering some details...</h2>
             <Form onSubmit={handleSubmit}>
@@ -96,7 +95,7 @@ function Register() {
 
             </Form>
         </div>
-        </>
+        </div>
     );
 }
 export default Register;
