@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import {NewsContextProvider} from './components/News/NewsContext.jsx'
 ReactDOM.render(
   <React.StrictMode>
+    <NewsContextProvider />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

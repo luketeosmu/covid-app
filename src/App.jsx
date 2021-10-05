@@ -11,19 +11,21 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import ForgotPasswordNavBar from './components/ForgotPassword/ForgotPasswordNavBar';
 import ForgotPasswordForm from './components/ForgotPassword/ForgotPasswordForm';
 
+
 function App() {
   return (
+
     <Router>
     <Switch>
-        <Route path='/login' exact component={Login}/>
-        <Route path="/home" exact component={Home} />
-        <Route path='/' exact component={Register}/>
-        <Route path='/Employees' exact component={EmployeeList}/>
-        <Route path='/ForgotPassword' exact component={ForgotPassword}/>
+       <Route path='/login' exact component={Login}/>
+       <Route path="/home" exact component={Home} />
+       <Route path='/' exact component={Register}/>
+       <Route path='/Employees' exact component={EmployeeList}/>
+       <Route path='/ForgotPassword' exact component={ForgotPassword}/>
+       
     </Switch>
     </Router>
   );
 }
-
 
 export default App;
