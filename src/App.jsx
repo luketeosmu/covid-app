@@ -13,10 +13,10 @@ function App() {
     <Switch>
         <Route path='/' exact component={Register}/>
         <Route path='/Employees' exact component={EmployeeList}/>
-
     </Switch>
     </Router>
   );
 }
+
 
 export default App;
