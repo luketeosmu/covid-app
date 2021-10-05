@@ -1,5 +1,8 @@
 import React from 'react'
-import { Card, Row, Col, Container } from 'react-bootstrap';
+import { Card, Row, Col, Container, Carousel } from 'react-bootstrap';
+import News from '../News/News'
+import BriefNewsArticle from '../News/BriefNewsArticle';
+import { NewsContext, NewsContextProvider } from "../News/NewsContext";
 
 const CovidStat = () => {
     return (
@@ -63,13 +66,7 @@ const CovidStat = () => {
                     <Card className="text-center">
                         <Card.Header>Featured Headlines</Card.Header>
                         <Card.Body>
-                            <Card.Title>Man successfully beats Covid-19 by doing bicep curls at the gym</Card.Title>
-                            <Card.Text>
-                            Buff Lord decides to go to the gym and the sheer testosterone he exudes caused the virus to leave the body in fear.
-                            </Card.Text>
-                            <h6>*insert image here*</h6>
-                            <h6>*kang chin shen test*</h6>
-                            <a href="">Link to original article</a>
+                        
                         </Card.Body>
                         <Card.Footer className="text-muted">Last Updated: 2 days ago</Card.Footer>
                     </Card>
