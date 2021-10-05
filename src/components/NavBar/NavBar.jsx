@@ -2,6 +2,7 @@ import React from 'react'
 import { Navbar, Nav, NavDropdown, Container, DropdownButton, Dropdown } from 'react-bootstrap'
 
 const NavBar = () => {
+    
     return (
         <Navbar collapseOnSelect bg="light" variant="light" expand="lg">
             <Container>
@@ -15,7 +16,7 @@ const NavBar = () => {
                         <Nav.Link href="#fettest">FET Testing</Nav.Link>
                     </Nav>
                     <Nav>
-                        <NavDropdown title="Hello, Name! " align="start" id="collasible-nav-dropdown">
+                        <NavDropdown title="Hello, Name! " align="start" id="collapsible-nav-dropdown">
                             <NavDropdown.Item href="#maccount">Manage Account</NavDropdown.Item>
                             <NavDropdown.Item href="#mbusiness">Manage Business</NavDropdown.Item>
                             <NavDropdown.Divider />
