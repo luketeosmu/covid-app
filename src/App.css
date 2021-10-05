@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+.a{
+  color: hsl(0, 7%, 94%);
+}
 
 .App-logo {
   height: 40vmin;
@@ -44,8 +47,8 @@
 }
 
 .news {
-  max-width: 500px;
-  padding: 30px;
+  max-width: 50rem;
+  padding: 2em;
   border: 1px solid lightgray;
   border-radius: 5px;
 }
