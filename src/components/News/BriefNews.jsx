@@ -14,7 +14,7 @@ function News(props) {
           ? data.articles.map((news) => (
               <BriefNewsArticle data={news} key={news.url} />
             ))
-          : "Loading"}
+          : "Loading..."}
       </div>
     </div>
   );

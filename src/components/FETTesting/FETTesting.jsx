@@ -23,7 +23,7 @@ const FETTesting = () => {
         { id: 12487, name: "William", status: true, testdate: "2/16/22" },
     ]
 
-    var today = new Date().toString();
+    var today = new Date().toDateString()
 
     return (
         <div>
@@ -32,8 +32,8 @@ const FETTesting = () => {
                 <Card.Header as="h2">
                     FET Testing
                 </Card.Header>
-                <Container className="m-5">
-                    <h6>{today}</h6>
+                <Container className="mt-5 mb-5">
+                    <h6>Today: {today}</h6>
                     {employees.map(employee => (
                         <Card className="pe-4 ps-4 pt-2 pb-1">
                             <Card.Body className="text-start">
