@@ -21,8 +21,7 @@ const Home = () => {
                         <BriefNews/>
                     </NewsContextProvider>
                 </Carousel.Item>
-                </Carousel>
-                            
+                </Carousel>            
         </div>
     )
 }
