@@ -53,6 +53,9 @@ export default function Login() {
                     <Button block size="lg" type="submit" disabled={!validateForm()}>
                         Login
                     </Button>
+                    <Button block size="lg" variant = "secondary">
+                        Register
+                    </Button>
                 </div>
             </Form>
         </div>
