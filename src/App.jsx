@@ -25,7 +25,7 @@ function App() {
        <Route path='/Employees' exact component={EmployeeList}/>
        <Route path='/ForgotPassword' exact component={ForgotPassword}/>
        <Route path = "/News" exact component = {NewsMainPage}/>
-       <Route path = "/GeneralMeasures" exact component = {GeneralMeasures}/>
+       <Route path = "/covidmeasures" exact component = {GeneralMeasures}/>
        
     </Switch>
     </Router>
