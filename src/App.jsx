@@ -11,7 +11,8 @@ import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import ForgotPasswordNavBar from './components/ForgotPassword/ForgotPasswordNavBar';
 import ForgotPasswordForm from './components/ForgotPassword/ForgotPasswordForm';
 import NewsMainPage from './components/News/NewsMainPage';
-
+import GeneralMeasures from './components/GeneralMeasures/GeneralMeasures'
+import VerticalNavBar from './components/VerticalNavBar/VerticalNavBar';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
        <Route path='/Employees' exact component={EmployeeList}/>
        <Route path='/ForgotPassword' exact component={ForgotPassword}/>
        <Route path = "/News" exact component = {NewsMainPage}/>
+       <Route path = "/GeneralMeasures" exact component = {GeneralMeasures}/>
        
     </Switch>
     </Router>
