@@ -13,6 +13,7 @@ import ForgotPasswordForm from './components/ForgotPassword/ForgotPasswordForm';
 import NewsMainPage from './components/News/NewsMainPage';
 import GeneralMeasures from './components/GeneralMeasures/GeneralMeasures'
 import VerticalNavBar from './components/VerticalNavBar/VerticalNavBar';
+import FETTesting from './components/FETTesting/FETTesting';
 
 function App() {
   return (
@@ -20,13 +21,13 @@ function App() {
     <Router>
     <Switch>
        <Route path='/login' exact component={Login}/>
-       <Route path="/home" exact component={Home} />
-       <Route path='/' exact component={Register}/>
+       <Route path="/" exact component={Home} />
+       <Route path='/register' exact component={Register}/>
        <Route path='/Employees' exact component={EmployeeList}/>
        <Route path='/ForgotPassword' exact component={ForgotPassword}/>
        <Route path = "/News" exact component = {NewsMainPage}/>
        <Route path = "/covidmeasures" exact component = {GeneralMeasures}/>
-       
+       <Route path = "/fettest" exact component = {FETTesting}/>
     </Switch>
     </Router>
   );

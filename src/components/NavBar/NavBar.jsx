@@ -6,14 +6,14 @@ const NavBar = () => {
     return (
         <Navbar collapseOnSelect bg="light" variant="light" expand="lg">
             <Container>
-                <Navbar.Brand href="home">Covid App</Navbar.Brand>
+                <Navbar.Brand href="/">Covid App</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="News">News</Nav.Link>
                         <Nav.Link href="employees">Employees</Nav.Link>
                         <Nav.Link href="covidmeasures">COVID-19 Measures</Nav.Link>
-                        <Nav.Link href="#fettest">FET Testing</Nav.Link>
+                        <Nav.Link href="fettest">FET Testing</Nav.Link>
                     </Nav>
                     <Nav>
                         <NavDropdown title="Hello, Name! " align="start" id="collapsible-nav-dropdown">
