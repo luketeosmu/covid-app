@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Card, InputGroup, Form, Button, Container, Tooltip, OverlayTrigger} from "react-bootstrap";
+import { Table, Card, InputGroup, Form, Button, Container, Tooltip, OverlayTrigger, Modal, Row, Col } from "react-bootstrap";
 import "./EmployeeList.css";
 import NavBar from "../../NavBar/NavBar";
 import { useState } from 'react'
@@ -25,9 +25,13 @@ const EmployeeList = () => {
     ]
 
     const [searchTerm, setSearchTerm] = useState("")
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const renderTooltip = (props) => (
-        <Tooltip className="me-2"id="button-tooltip" {...props}>
+        <Tooltip className="me-2" id="button-tooltip" {...props}>
             Add New Employee
         </Tooltip>
     );
@@ -37,10 +41,10 @@ const EmployeeList = () => {
             <NavBar />
             <Card className="text-center pb-5">
                 <Card.Header as="h2">Manage Employees</Card.Header>
-                <div className="d-flex justify-content-center mt-5">
+                {/* <div className="d-flex justify-content-center mt-5">
                     <h4> List of Employees </h4>
-                </div>
-                <Container className="mt-3">
+                </div> */}
+                <Container className="mt-5">
                     <InputGroup>
                         <Form.Control
                             type="text"
@@ -98,7 +102,7 @@ const EmployeeList = () => {
                 <Container className="mb-5 fixed-bottom text-end">
                     <OverlayTrigger
                         placement="left"
-                        delay={{ show: 250, hide: 250 }}
+                        delay={{ show: 100, hide: 150 }}
                         overlay={renderTooltip}
                     >
                         <Button style={{
@@ -109,11 +113,48 @@ const EmployeeList = () => {
                             fontSize: "12px",
                             textAlign: "center"
                         }}
+                            onClick={handleShow}
                             className="mt-5"
                             variant="primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                                 <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z" />
-                            </svg></Button>
+                            </svg>
+                        </Button>
                     </OverlayTrigger>
+                    <Modal show={show} onHide={handleClose} centered>
+                        <Modal.Header>
+                            <Modal.Title className="ms-4">Add New Employee</Modal.Title>
+                            {/* <CloseButton /> doesnt work */}
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Form className="ms-4 me-4">
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Employee ID</Form.Label>
+                                    <Form.Control type="number" placeholder="e.g. 012345" required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                                    <Form.Label>Employee Name</Form.Label>
+                                    <Form.Control type="text" placeholder="e.g. John Smith" required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+                                    <Form.Label>Vaccination Status</Form.Label>
+                                    <Form.Check type="radio" label="Vaccinated" name="vacRadio" id="vac" required />
+                                    <Form.Check type="radio" label="Unvaccinated" name="vacRadio" id="unvac" required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                                    <Form.Label>Upcoming FET Testing Date</Form.Label>
+                                    <Form.Control type="date" />
+                                </Form.Group>
+                            </Form>
+                        </Modal.Body>
+                        <Modal.Footer className="me-4">
+                            <Button variant="secondary" onClick={handleClose}>
+                                Close
+                            </Button>
+                            <Button variant="success" onClick={handleClose}>
+                                Submit
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Container>
             </Card>
         </div>
