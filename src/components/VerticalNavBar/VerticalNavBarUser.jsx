@@ -1,18 +1,18 @@
 import React from 'react'
-import { Nav, Container } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 
-const VerticalNavBar = () => {
+const VerticalNavBarUser = () => {
     return ( 
-        <div class="verticalNavBar">
+        <div class="verticalNavBarUser">
             <Nav className="flex-column mt-3">
                 <Nav.Item>
-                    <Nav.Link href="#" style={{color: "white"}}>INDOORS</Nav.Link>
+                    <Nav.Link href="#" style={{color: "white"}}>PROFILE</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OUTDOORS</Nav.Link>
+                    <Nav.Link eventKey="#" style={{color: "white"}}>BUSINESS DETAILS</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OTHERS...</Nav.Link>
+                    <Nav.Link eventKey="#" style={{color: "white"}}>YOUR EMPLOYEES</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="#" style={{color: "white"}}>OTHERS...</Nav.Link>
@@ -25,4 +25,4 @@ const VerticalNavBar = () => {
     );
 }
  
-export default VerticalNavBar;
+export default VerticalNavBarUser;
