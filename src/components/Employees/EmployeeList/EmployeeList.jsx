@@ -3,6 +3,7 @@ import { Table, Card, InputGroup, Form, Button, Container, Tooltip, OverlayTrigg
 import "./EmployeeList.css";
 import NavBar from "../../NavBar/NavBar";
 import { useState } from 'react'
+import Footer from "../../Footer/Footer";
 
 const EmployeeList = () => {
     const employees = [
@@ -168,6 +169,7 @@ const EmployeeList = () => {
                     </Modal>
                 </Container>
             </Card>
+            <Footer />
         </div>
     );
 }

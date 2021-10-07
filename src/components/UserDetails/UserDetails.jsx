@@ -2,6 +2,7 @@ import NavBar from "../NavBar/NavBar";
 import VerticalNavBarUser from "../VerticalNavBar/VerticalNavBarUser";
 import UserInformation from "./UserInfomation";
 import {Container, Row, Col} from 'react-bootstrap';
+import Footer from "../Footer/Footer";
 
 const UserDetails = () => {
     return (
@@ -21,6 +22,7 @@ const UserDetails = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 }

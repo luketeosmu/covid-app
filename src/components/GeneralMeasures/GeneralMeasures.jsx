@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../NavBar/NavBar'
 import VerticalNavBarCovid from '../VerticalNavBar/VerticalNavBarCovid';
 import {Container, Row, Col} from 'react-bootstrap';
+import Footer from "../Footer/Footer";
 
 const GeneralMeasures = () => {
     return (
@@ -21,6 +22,7 @@ const GeneralMeasures = () => {
                     </Col>
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 }

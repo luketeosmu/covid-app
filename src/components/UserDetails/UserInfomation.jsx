@@ -17,6 +17,7 @@ const UserInformation = () => {
                     <p>Vaccination Status: Vaccinated</p>
                 </li>
             </ul>
+            
         </Container>
     );
 }
