@@ -6,6 +6,7 @@ import BriefNews from "../News/BriefNews";
 import NewsArticle from "../News/NewsArticle";
 import { NewsContext, NewsContextProvider } from "../News/NewsContext";
 import { Carousel, Row, Col, Card, Container } from "react-bootstrap";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
@@ -16,7 +17,6 @@ const Home = () => {
         <Row>
           <Col>
             <Card className="text-center">
-              {/* <Card.Header>Featured Headlines</Card.Header> */}
               <Carousel>
                 <Carousel.Item>
                   <NewsContextProvider>
@@ -24,15 +24,19 @@ const Home = () => {
                   </NewsContextProvider>
                 </Carousel.Item>
               </Carousel>
-              {/* <Card.Footer className="text-muted">
-                Last Updated: 2 days ago
-              </Card.Footer> */}
             </Card>
           </Col>
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
 
 export default Home;
+
+{/* <Card.Header>Featured Headlines</Card.Header> */}
+
+{/* <Card.Footer className="text-muted">
+Last Updated: 2 days ago
+</Card.Footer> */}

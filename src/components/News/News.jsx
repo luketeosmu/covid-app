@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NewsContext } from "./NewsContext";
 import NewsArticle from "./NewsArticle";
+import Footer from "../Footer/Footer";
 
 function News(props) {
   const { data } = useContext(NewsContext);
@@ -16,6 +17,7 @@ function News(props) {
             ))
           : "Loading..."}
       </div>
+      <Footer />
     </div>
   );
 }

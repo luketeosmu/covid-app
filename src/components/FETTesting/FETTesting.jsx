@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../NavBar/NavBar'
 import { Container, Card, Row, Badge } from 'react-bootstrap'
+import Footer from "../Footer/Footer";
 
 const FETTesting = () => {
 
@@ -26,7 +27,7 @@ const FETTesting = () => {
     var today = new Date().toDateString()
 
     return (
-        <div>
+        <div className="fettesing">
             <NavBar />
             <Card className="text-center pb-5">
                 <Card.Header as="h2">
@@ -59,6 +60,7 @@ const FETTesting = () => {
                     ))}
                 </Container>
             </Card>
+            <Footer />
         </div>
     )
 }
