@@ -1,0 +1,15 @@
+.category-title {
+    color: #FFFFFF;
+    font-size: 100px;
+    text-align: center;
+}
+
+.category-subtitle {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.event {
+    border-color: dodgerblue;
+    border-width: 10px;
+}
