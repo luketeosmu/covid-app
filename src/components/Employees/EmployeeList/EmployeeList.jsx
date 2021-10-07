@@ -24,6 +24,17 @@ const EmployeeList = () => {
         { id: 12487, name: "William", status: true },
     ]
 
+    const [employeeId, setEmployeeId] = useState(0)
+    const [employeeName, setEmployeeName] = useState("")
+    const [employeeStatus, setEmployeeStatus] = useState(false)
+    const [employeeFET, setEmployeeFET] = useState("")
+    function validateForm() {
+        return employeeId !== 0 && employeeName.length > 0
+    }
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
+
     const [searchTerm, setSearchTerm] = useState("")
     const [show, setShow] = useState(false);
 
@@ -126,7 +137,7 @@ const EmployeeList = () => {
                             {/* <CloseButton /> doesnt work */}
                         </Modal.Header>
                         <Modal.Body>
-                            <Form className="ms-4 me-4">
+                            <Form className="ms-4 me-4" onSubmit={handleSubmit}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>Employee ID</Form.Label>
                                     <Form.Control type="number" placeholder="e.g. 012345" required />
@@ -150,7 +161,7 @@ const EmployeeList = () => {
                             <Button variant="secondary" onClick={handleClose}>
                                 Close
                             </Button>
-                            <Button variant="success" onClick={handleClose}>
+                            <Button variant="success" onClick={handleClose} disabled={!validateForm()}>
                                 Submit
                             </Button>
                         </Modal.Footer>

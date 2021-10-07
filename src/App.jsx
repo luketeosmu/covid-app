@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import Login from "./components/Login/Login.jsx"
 import NavBar from './components/NavBar/NavBar';
-import Register from './components/Registration/Registration';
+import RegisterUser from './components/Registration/RegisterUser';
 import EmployeeList from './components/Employees/EmployeeList/EmployeeList';
 import Home from './components/Home/Home';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
@@ -25,7 +25,7 @@ function App() {
     <Switch>
        <Route path='/login' exact component={Login}/>
        <Route path="/" exact component={Home} />
-       <Route path='/register' exact component={Register}/>
+       <Route path='/register' exact component={RegisterUser}/>
        <Route path='/Employees' exact component={EmployeeList}/>
        <Route path='/ForgotPassword' exact component={ForgotPassword}/>
        <Route path = "/News" exact component = {NewsMainPage}/>
