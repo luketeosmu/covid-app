@@ -11,7 +11,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="covidmeasures">COVID-19 Measures</Nav.Link>
-                        <Nav.Link href="News">News</Nav.Link>
+                        <Nav.Link href="news">News</Nav.Link>
                         <Nav.Link href="employees">Employees</Nav.Link>
                         <Nav.Link href="fettest">FET Testing</Nav.Link>
                     </Nav>
