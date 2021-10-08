@@ -7,13 +7,14 @@ import NewsArticle from "../News/NewsArticle";
 import { NewsContext, NewsContextProvider } from "../News/NewsContext";
 import { Carousel, Row, Col, Card, Container } from "react-bootstrap";
 import Footer from "../Footer/Footer";
+import NewsApi from "../_News_COPY/NewsApi";
 
 const Home = () => {
   return (
     <div>
       <NavBar />
       <CovidStat />
-      <Container>
+      {/* <Container>
         <Row>
           <Col>
             <Card className="text-center">
@@ -27,7 +28,8 @@ const Home = () => {
             </Card>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+      <NewsApi/>
       <Footer />
     </div>
   );

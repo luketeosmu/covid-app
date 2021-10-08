@@ -10,6 +10,7 @@ import NewsMainPage from './components/News/NewsMainPage';
 import GeneralMeasures from './components/GeneralMeasures/GeneralMeasures'
 import FETTesting from './components/FETTesting/FETTesting';
 import UserDetails from './components/UserDetails/UserDetails';
+import NewsApi from "./components/_News_COPY/NewsApi";
 import BusinessCat from "./components/Registration/BusinessCat";
 import RegisterBusiness from "./components/Registration/RegisterBusiness";
 
@@ -37,6 +38,7 @@ function App() {
         <Route path = "/covidmeasures" exact component = {GeneralMeasures}/>
         <Route path = "/userdetails" exact component = {UserDetails}/>
         <Route path = "/fettest" exact component = {FETTesting}/>
+        <Route path = '/testingnewsapi' exact component = {NewsApi}/>
       </Switch>
     </Router>
   );
