@@ -1,25 +1,65 @@
 import React from 'react'
-import { Nav } from 'react-bootstrap'
+import { NavItem, Dropdown, NavLink, Nav} from 'react-bootstrap'
+import './VerticalNavBarCovid.css'
 
 const VerticalNavBarCovid = () => {
     return ( 
-        <div class="verticalNavBarCovid">
-            <Nav className="flex-column mt-3">
-                <Nav.Item>
-                    <Nav.Link href="#" style={{color: "white"}}>INDOORS</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OUTDOORS</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OTHERS...</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OTHERS...</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link eventKey="#" style={{color: "white"}}>OTHERS...</Nav.Link>
-                </Nav.Item>
+        <div class="verticalNavBarCovid m-3">
+            <Nav variant="light">
+
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Preparing Facilities</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Attraction Set Up</h2></a>
+                    <a href="#InfoPrepareFacilities" className="title-level-3">General</a>
+                    <a href="#InfoPrepareFacilities" className="title-level-3">Rides, Shows & Tours</a>
+                        <a href="#InfoPrepareFacilities" className="sub-title">Indoor Shows</a>
+                        <a href="#InfoPrepareFacilities" className="sub-title">Outdoor Shows</a>
+                        <a href="#InfoPrepareFacilities" className="sub-title">Live Performances</a>
+                        <a href="#InfoPrepareFacilities" className="sub-title">Tours</a>
+                    <a href="#InfoPrepareFacilities" className="title-level-3">Work-Related Events</a>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Operating Capacity</h2></a>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Management of Proximity & Touched Surfaces</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Managing Arrival</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Health Checks and Contact Tracing</h2></a>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Managing Entry</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>In-Attraction Plans</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Managing Crowds</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+            
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Infection Control</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Cleaning and Sanitisation</h2></a>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Response Plan for Infected Cases</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Safe Workplace</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Workplace and Manpower</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+
+            <Dropdown as={NavItem}>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Marketing and Communication</Dropdown.Toggle>
+            <Dropdown.Menu style = {{width: "280px"}}>
+                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">More Information</h2></a>
+            </Dropdown.Menu>
+            </Dropdown>
+
             </Nav>
         </div>
     );

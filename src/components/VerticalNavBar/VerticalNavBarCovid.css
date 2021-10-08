@@ -1,0 +1,23 @@
+.title-level-2{
+    font-size: 15px;
+    font-family: sans-serif;
+    text-align: left;
+    margin: 15px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.title-level-3{
+    display: block;
+    padding-left: 30px;
+    color: #708090;
+}
+
+.sub-title{
+    display: block;
+    padding-left: 50px;
+    color: #708090;
+}
+
