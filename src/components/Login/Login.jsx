@@ -4,48 +4,55 @@ import "./Login.css";
 import { useHistory } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import { login } from "../../actions/authActions";
+import { useHistory } from 'react-router-dom';
 
 
 
-export default function Login() {
+const Login = ({ auth, login, error }) => {
     const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [errorMsg, setErrorMsg] = useState("");
+  
     function validateForm() {
-        return email.length > 0 && password.length > 0;
+      return email.length > 0 && password.length > 0;
     }
-
+  
+    function resetLoginForm() {
+      setEmail("");
+      setPassword("");
+    }
+  
+    function newAccount() {
+      history.push('/createAccount');
+    }
+  
+    function forgotPassword() {
+      history.push('/forgotPassword');
+    }
+  
     function handleSubmit(event) {
-        var apiBaseUrl = "http://localhost:8080/api/";
-        var self = this;
-        var payload={
-        "email":this.state.username,
-        "password":this.state.password
-        }
-        axios.post(apiBaseUrl+'login', payload)
-        .then(function (response) {
-        console.log(response);
-        if(response.data.code == 200){
-        console.log("Login successfull");
-        var uploadScreen=[];
-        uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
-        self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
-        }
-        else if(response.data.code == 204){
-        console.log("Username password do not match");
-        alert("username password do not match")
-        }
-        else{
-        console.log("Username does not exists");
-        alert("Username does not exist");
-        }
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-        }
+      event.preventDefault();
+      login(email, password);
     }
+  
+    useEffect(() => {
+      if (auth.isAuthenticated === true) {
+        if (auth.user.username == "admin@psa.com") {
+          history.push("/webServicesSettings");
+        } else {
+          history.push("/");
+        }
+      }
+    }, [auth]);
+  
+    useEffect(() => {
+      if (error.status != null) {
+        resetLoginForm();
+        setErrorMsg("Invalid email and password");
+      }
+    }, [error]);
 
     return (
         <div className="loginPage">
@@ -83,4 +90,15 @@ export default function Login() {
         </div>
     );
 }
-//export default Login;
+const mapStateToProps = (state) => ({
+    auth: state.auth,
+    error: state.error
+  });
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+      login: (email, password) => dispatch(login(email, password))
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);
