@@ -10,15 +10,7 @@ import NewsMainPage from './components/News/NewsMainPage';
 import GeneralMeasures from './components/GeneralMeasures/GeneralMeasures'
 import FETTesting from './components/FETTesting/FETTesting';
 import UserDetails from './components/UserDetails/UserDetails';
-
-// import VerticalNavBarCovid from './components/VerticalNavBar/VerticalNavBarCovid';
-// import UserInformation from './components/UserDetails/UserInfomation';
-// import VerticalNavBarUser from './components/VerticalNavBar/VerticalNavBarUser';
-// import ForgotPasswordForm from './components/ForgotPassword/ForgotPasswordForm';
-// import ForgotPasswordNavBar from './components/ForgotPassword/ForgotPasswordNavBar';
-// import NavBar from './components/NavBar/NavBar';
-// import logo from './logo.svg';
-
+import NewsApi from "./components/_News_COPY/NewsApi";
 
 function App() {
   return (
@@ -33,6 +25,7 @@ function App() {
         <Route path = "/covidmeasures" exact component = {GeneralMeasures}/>
         <Route path = "/userdetails" exact component = {UserDetails}/>
         <Route path = "/fettest" exact component = {FETTesting}/>
+        <Route path = '/testingnewsapi' exact component = {NewsApi}/>
       </Switch>
     </Router>
   );
