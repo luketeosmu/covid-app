@@ -84,8 +84,8 @@ const NewsApi = () => {
                     paddingRight: '25px', 
                     borderRight: '1px black solid'
                 }}>
-                    <a href = {data.articles[1].url}>
-                        <img src = {data.articles[1].urlToImage} 
+                    <a href = {data.articles[6].url}>
+                        <img src = {data.articles[6].urlToImage} 
                         style={{
                             height: '200px',
                             width: '300px',
@@ -101,10 +101,10 @@ const NewsApi = () => {
                         fontSize: '25px',
                         marginBottom: '10px'
                     }}>
-                        {data.articles[1].title}
+                        {data.articles[6].title}
                     </h2>
 
-                    <p style={{color:'#708090'}}>Description: {data.articles[1].description} (continue reading ...)</p>
+                    <p style={{color:'#708090'}}>Description: {data.articles[6].description} (continue reading ...)</p>
                 </div>
             </div>
 
@@ -144,8 +144,8 @@ const NewsApi = () => {
                     paddingRight: '25px', 
                     borderRight: '1px black solid'
                 }}>
-                    <a href = {data.articles[5].url}>
-                        <img src = {data.articles[5].urlToImage} 
+                    <a href = {data.articles[3].url}>
+                        <img src = {data.articles[3].urlToImage} 
                         style={{
                             height: '200px',
                             width: '300px',
@@ -161,10 +161,10 @@ const NewsApi = () => {
                         fontSize: '25px',
                         marginBottom: '10px'
                     }}>
-                        {data.articles[5].title}
+                        {data.articles[3].title}
                     </h2>
 
-                    <p style={{color:'#708090'}}>Description: {data.articles[5].description} (continue reading ...)</p>
+                    <p style={{color:'#708090'}}>Description: {data.articles[3].description} (continue reading ...)</p>
                 </div>
             </div>
 
