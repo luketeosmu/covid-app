@@ -42,7 +42,7 @@ export default function Login() {
                         <Form.Control autoFocus required name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}placeholder="Enter email" />
                     </Form.Group>
 
-                    <Form.Group controlID="password" className="mt-3" style={{width:"500px", margin:'auto'}}>
+                    <Form.Group controlId="password" className="mt-3" style={{width:"500px", margin:'auto'}}>
                         <Form.Label>Password</Form.Label>
                         <Form.Control required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}placeholder="Enter password"/>
                         <div className="mt-4 mb-1" style={{textAlign:'center'}}>

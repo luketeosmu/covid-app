@@ -7,11 +7,34 @@ class AuthenticationService {
     registerUser = (user) => {
         return axios
             .post(REGISTER_API_URL, user)
+            .then((response) => {
+                localStorage.clear();
+                localStorage.setItem("user", JSON.stringify(response.data));
+                // console.log(localStorage.getItem("user"));
+                // return response.data;
+                console.log(JSON.parse(localStorage.getItem("user")).id)
+            })
             .catch((err) => {
                 console.log(err);
-                
+                // this.signOut();
             });
     };
+//store user after registering, register business and use id from local storage
+//then store business under user, and sign out.
+
+    registerBusiness = (business) => {
+        return axios
+            .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
+            business,
+                { headers: { "Content-Type": "application/json",
+                "Authorization": `Basic ${JSON.parse(localStorage.getItem("user")).username}:${JSON.parse(localStorage.getItem("user")).password}`}})
+            .then((response) => {
+                this.signOut();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     authenticate = (user) => {
         return axios
@@ -28,11 +51,16 @@ class AuthenticationService {
     };
 
     signOut() {
-        localStorage.removeItem("user");
+        localStorage.clear();
+        // localStorage.removeItem("user");
     }
 
     getCurrentUser() {
         return JSON.parse(localStorage.getItem("user"));
+    }
+
+    isLoggedIn() {
+        return localStorage.getItem("user") ? true : false
     }
 }
 
