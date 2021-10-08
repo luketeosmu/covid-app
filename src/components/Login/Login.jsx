@@ -17,11 +17,33 @@ export default function Login() {
     }
 
     function handleSubmit(event) {
-        event.preventDefault();
-        if (email == "borrower@email.com") {
-            //insert event
-        } else {
-            //insert event
+        var apiBaseUrl = "http://localhost:8080/api/";
+        var self = this;
+        var payload={
+        "email":this.state.username,
+        "password":this.state.password
+        }
+        axios.post(apiBaseUrl+'login', payload)
+        .then(function (response) {
+        console.log(response);
+        if(response.data.code == 200){
+        console.log("Login successfull");
+        var uploadScreen=[];
+        uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
+        self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})
+        }
+        else if(response.data.code == 204){
+        console.log("Username password do not match");
+        alert("username password do not match")
+        }
+        else{
+        console.log("Username does not exists");
+        alert("Username does not exist");
+        }
+        })
+        .catch(function (error) {
+        console.log(error);
+        });
         }
     }
 
@@ -51,7 +73,7 @@ export default function Login() {
                     </Form.Group>
 
                     <div className="d-flex justify-content-center mt-4">
-                        <Button block size="lg" type="submit" disabled={!validateForm()}>
+                        <Button block size="lg" type="submit" disabled={!validateForm()} onClick={(event) => this.handleSubmit(event)}>
                             Login
                         </Button>
                     </div>
