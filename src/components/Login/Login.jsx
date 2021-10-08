@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./Login.css";
 import { useHistory } from 'react-router-dom';
@@ -6,24 +6,28 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import {Container, Row, Col} from 'react-bootstrap'
 
+import AuthenticationService from "../../services/AuthenticationService"
+import UserService from "../../services/UserService"
 
 export default function Login() {
     const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+  
+    const login = (e) => {
+        e.preventDefault();
+        let user = {
+            email: email,
+            password: password,
+        };
 
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        if (email == "borrower@email.com") {
-            //insert event
-        } else {
-            //insert event
-        }
-    }
+        AuthenticationService.authenticate(user)
+            .then((res) => {
+                history.push({
+                    pathname: "/",
+                });
+            });
+    };
 
     return (
         <div className="loginPage">
@@ -35,12 +39,12 @@ export default function Login() {
 
                     <Form.Group controlId="email" style={{width:"500px", margin:'auto'}}>
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control autoFocus type="email" value={email} onChange={(e) => setEmail(e.target.value)}placeholder="Enter email" />
+                        <Form.Control autoFocus required name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group controlID="password" className="mt-3" style={{width:"500px", margin:'auto'}}>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}placeholder="Enter password"/>
+                        <Form.Control required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)}placeholder="Enter password"/>
                         <div className="mt-4 mb-1" style={{textAlign:'center'}}>
                             <Form.Text className="text-muted">
                                 We'll never share your personal details with anyone else.
@@ -48,7 +52,7 @@ export default function Login() {
                         </div>
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" style={{margin:'auto',display:'block', padding: '5px 20px'}}>
+                    <Button variant="primary" type="submit" onClick={login} style={{margin:'auto',display:'block', padding: '5px 20px'}}>
                         Login
                     </Button>
                     
@@ -61,4 +65,3 @@ export default function Login() {
         </div>
     );
 }
-//export default Login;

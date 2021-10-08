@@ -8,10 +8,14 @@ export default class CovidStat extends React.Component {
   };
 
   async componentDidMount() {
+    try{
     const url = "https://corona-api.com/countries/sg";
     const response = await fetch(url);
     const data = await response.json();
     this.setState({ covid: data.data.timeline[0], loading: false });
+    } catch (error) {
+      
+    }
   }
 
   render() {
