@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { login } from "../../actions/authActions";
-
+import { connect } from "react-redux";
 
 
 const Login = ({ auth, login, error }) => {
@@ -91,7 +91,7 @@ const Login = ({ auth, login, error }) => {
 }
 const mapStateToProps = (state) => ({
     auth: state.auth,
-    error: state.error
+    error: state.errorß
   });
   
   const mapDispatchToProps = dispatch => {
