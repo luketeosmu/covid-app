@@ -22,12 +22,19 @@ class AuthenticationService {
 //store user after registering, register business and use id from local storage
 //then store business under user, and sign out.
 
-    registerBusiness = (business) => {
-        return axios
+    registerBusiness = async (business) => {
+        return await axios
             .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
             business,
-                { headers: { "Content-Type": "application/json",
-                "Authorization": `Basic ${JSON.parse(localStorage.getItem("user")).username}:${JSON.parse(localStorage.getItem("user")).password}`}})
+                { headers: 
+                    {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        // Authorization: `Basic ${JSON.parse(localStorage.getItem("user")).username}:${JSON.parse(localStorage.getItem("user")).password}`
+                        'Authorization': 'Basic hihi@gmail.com:Tester123'
+                    }
+                }
+            )
             .then((response) => {
                 this.signOut();
             })
