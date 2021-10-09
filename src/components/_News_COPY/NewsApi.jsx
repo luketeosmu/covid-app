@@ -4,10 +4,11 @@ import {useState, useEffect} from 'react';
 import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 import WebFont from 'webfontloader';
+import { Container } from 'react-bootstrap'
 
 const NewsApi = () => {
     const apiKey = '99b0c49cfb104e6e89603bb6d93ae15b';
-    const baseURL = `https://newsapi.org/v2/top-headlines?country=sg&category=health&sortBy=relevancy&q=covid&apiKey=${apiKey}`;
+    const baseURL = `https://newsapi.org/v2/top-headlines?country=sg&sortBy=popularity&q=covid&apiKey=${apiKey}`;
     const [data, setData] = useState(null);
     const [error, setError] = React.useState(null);
 
@@ -34,6 +35,7 @@ const NewsApi = () => {
 
     return (
         <div className="news-api">
+            <Container >
             <h1 className='title'
             style={{
                 color:'white', 
@@ -45,7 +47,7 @@ const NewsApi = () => {
                 margin: '0px', 
                 fontSize: '20px', 
                 textAlign:'center'}}>
-                    LATEST COVID-19 NEWS - WORLDWIDE
+                    LATEST COVID-19 NEWS - SINGAPORE
             </h1>
 
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
@@ -197,6 +199,7 @@ const NewsApi = () => {
                     <p style={{color:'#708090'}}>Description: {data.articles[4].description} (continue reading ...)</p>
                 </div>
             </div>
+            </Container>
         </div>
         
     );

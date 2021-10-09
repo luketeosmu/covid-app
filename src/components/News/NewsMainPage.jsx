@@ -1,6 +1,7 @@
 import React from 'react';
 import News from './News'
 import NavBar from '../NavBar/NavBar'
+import Footer from '../Footer/Footer';
 import { NewsContextProvider } from "./NewsContext";
 
 function NewsMainPage() {
@@ -10,6 +11,7 @@ function NewsMainPage() {
             <NewsContextProvider>
                 <News/>
             </NewsContextProvider>
+            <Footer />
         </div>
     )
 }
