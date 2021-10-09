@@ -8,14 +8,12 @@ export default class CovidStat extends React.Component {
   };
 
   async componentDidMount() {
-    try{
-    const url = "https://corona-api.com/countries/sg";
-    const response = await fetch(url);
-    const data = await response.json();
-    this.setState({ covid: data.data.timeline[0], loading: false });
-    } catch (error) {
-      
-    }
+    try {
+      const url = "https://corona-api.com/countries/sg";
+      const response = await fetch(url);
+      const data = await response.json();
+      this.setState({ covid: data.data.timeline[0], loading: false });
+    } catch (error) {}
   }
 
   render() {
@@ -26,7 +24,20 @@ export default class CovidStat extends React.Component {
         ) : (
           <Container>
             <Card className="text-center">
-              <Card.Header>COVID-19 Statistics (updated daily)</Card.Header>
+              <Card.Header
+                style={{
+                  color: "black",
+                  fontWeight: "800",
+                  padding: "10px",
+                  fontFamily: "Libre Franklin",
+                  display: "block",
+                  margin: "0px",
+                  fontSize: "20px",
+                  textAlign: "center",
+                }}
+              >
+                COVID-19 Statistics (updated daily)
+              </Card.Header>
               <Row>
                 <Col>
                   <Card>
@@ -55,9 +66,7 @@ export default class CovidStat extends React.Component {
                       <Card.Subtitle className="text-center">
                         {this.state.covid.active}
                       </Card.Subtitle>
-                      <Card.Text
-                        className="text-center text-muted"
-                      >
+                      <Card.Text className="text-center text-muted">
                         N/A
                       </Card.Text>
                     </Card.Body>
