@@ -5,6 +5,8 @@ import {Container, Row, Col} from 'react-bootstrap';
 import Footer from "../Footer/Footer";
 import InfoPrepareFacilities from './InfoPrepareFacilities';
 import InfoManagingArrival from './InfoManagingArrival';
+import InfoAttractionPlans from './InfoInAttractionPlans';
+import InfoInfectionControl from './InfoInfectionControl';
 
 const GeneralMeasures = () => {
     return (
@@ -21,6 +23,8 @@ const GeneralMeasures = () => {
                     <Col className="m-3">
                         <InfoPrepareFacilities />
                         <InfoManagingArrival />
+                        <InfoAttractionPlans />
+                        <InfoInfectionControl />
                     </Col>
                 </Row>
             </Container>

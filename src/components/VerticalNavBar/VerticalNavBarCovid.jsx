@@ -32,17 +32,17 @@ const VerticalNavBarCovid = () => {
             </Dropdown>
 
             <Dropdown as={NavItem}>
-            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>In-Attraction Plans</Dropdown.Toggle>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}><a href="#InfoAttractionsSetUp">In-Attraction Plans</a></Dropdown.Toggle>
             <Dropdown.Menu style = {{width: "280px"}}>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Managing Crowds</h2></a>
+                <a href="#InfoManagingCrowds"> <h2 className="title-level-2">Managing Crowds</h2></a>
             </Dropdown.Menu>
             </Dropdown>
             
             <Dropdown as={NavItem}>
-            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Infection Control</Dropdown.Toggle>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}><a href="#InfoInfectionControl">Infection Control</a></Dropdown.Toggle>
             <Dropdown.Menu style = {{width: "280px"}}>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Cleaning and Sanitisation</h2></a>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Response Plan for Infected Cases</h2></a>
+                <a href="#InfoCleanSanitise"> <h2 className="title-level-2">Cleaning and Sanitisation</h2></a>
+                <a href="#InfoResPlanInfected"> <h2 className="title-level-2">Response Plan for Infected Cases</h2></a>
             </Dropdown.Menu>
             </Dropdown>
 

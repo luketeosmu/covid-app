@@ -2,7 +2,7 @@ import './Info.css'
 
 const InfoManagingArrival = () => {
     return (
-        <div>
+        <div style={{marginBottom:"50px"}}>
             <h1 id="InfoManagingArrival" className="title-level1">Managing Arrival</h1>
             <h2 id="InfoHealthContactTrace" className="title-level2">Health Checks and Contact Tracing</h2>
             <p>
@@ -19,7 +19,7 @@ const InfoManagingArrival = () => {
 
             <span> 3. Ensure that groups of visitors entering together must not exceed 5 pax.<br/></span>
 
-            <span> 4.  Ensure, where reasonably practical, that all visitors wear masks for the duration of their visit.<br/></span>
+            <span> 4. Ensure, where reasonably practical, that all visitors wear masks for the duration of their visit.<br/></span>
             </p>
         </div>
     );
