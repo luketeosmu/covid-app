@@ -3,11 +3,14 @@ import NavBar from '../NavBar/NavBar'
 import VerticalNavBarCovid from '../VerticalNavBar/VerticalNavBarCovid';
 import {Container, Row, Col} from 'react-bootstrap';
 import Footer from "../Footer/Footer";
+
+// General Measures:
 import InfoPrepareFacilities from './InfoPrepareFacilities';
 import InfoManagingArrival from './InfoManagingArrival';
 import InfoAttractionPlans from './InfoInAttractionPlans';
 import InfoInfectionControl from './InfoInfectionControl';
 import InfoSafeWorkplace from './InfoSafeWorkplace';
+import InfoMarketingCommunication from './InfoMarketingCommunication';
 
 const GeneralMeasures = () => {
     return (
@@ -27,6 +30,7 @@ const GeneralMeasures = () => {
                         <InfoAttractionPlans />
                         <InfoInfectionControl />
                         <InfoSafeWorkplace />
+                        <InfoMarketingCommunication />
                     </Col>
                 </Row>
             </Container>
