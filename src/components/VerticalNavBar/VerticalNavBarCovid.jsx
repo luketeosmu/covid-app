@@ -8,18 +8,18 @@ const VerticalNavBarCovid = () => {
             <Nav variant="light">
 
             <Dropdown as={NavItem}>
-            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Preparing Facilities</Dropdown.Toggle>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}><a href="#InfoAttractionsSetUp"> Preparing Facilities</a></Dropdown.Toggle>
             <Dropdown.Menu style = {{width: "280px"}}>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Attraction Set Up</h2></a>
-                    <a href="#InfoPrepareFacilities" className="title-level-3">General</a>
-                    <a href="#InfoPrepareFacilities" className="title-level-3">Rides, Shows & Tours</a>
-                        <a href="#InfoPrepareFacilities" className="sub-title">Indoor Shows</a>
-                        <a href="#InfoPrepareFacilities" className="sub-title">Outdoor Shows</a>
-                        <a href="#InfoPrepareFacilities" className="sub-title">Live Performances</a>
-                        <a href="#InfoPrepareFacilities" className="sub-title">Tours</a>
-                    <a href="#InfoPrepareFacilities" className="title-level-3">Work-Related Events</a>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Operating Capacity</h2></a>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Management of Proximity & Touched Surfaces</h2></a>
+                <a href="#InfoAttractionsSetUp"> <h2 className="title-level-2">Attraction Set Up</h2></a>
+                    <a href="#InfoGeneral" className="title-level-3">General</a>
+                    <a href="#InfoRideShowsTours" className="title-level-3">Rides, Shows & Tours</a>
+                        <a href="#InfoIndoorShows" className="sub-title">Indoor Shows</a>
+                        <a href="#InfoOutdoorShows" className="sub-title">Outdoor Shows</a>
+                        <a href="#InfoLivePerformances" className="sub-title">Live Performances</a>
+                        <a href="#InfoTours" className="sub-title">Tours</a>
+                    <a href="#InfoWorkRelatedEvents" className="title-level-3">Work-Related Events</a>
+                <a href="#InfoOperatingCapacity"> <h2 className="title-level-2">Operating Capacity</h2></a>
+                <a href="#InfoMngProxTouchedSurf"> <h2 className="title-level-2">Management of Proximity & Touched Surfaces</h2></a>
             </Dropdown.Menu>
             </Dropdown>
 

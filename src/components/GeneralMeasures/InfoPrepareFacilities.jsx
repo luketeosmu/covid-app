@@ -5,7 +5,7 @@ const InfoPrepareFacilities = () => {
         <div>
             <h1 id="InfoPrepareFacilities" className="title-level1">Preparing Facilities</h1>
             <h2 id="InfoAttractionsSetUp" className="title-level2">Attractions Set Up</h2>
-                <h3 className="title-level3">General</h3>
+                <h3 id="InfoGeneral" className="title-level3">General</h3>
                     <p>
                     <span> 1. Develop and implement detailed physical layout plans, including reconfiguration of spaces if applicable, at entry and exit points to achieve safe circulation with at least 1m distancing between visitors who are not from the same group, ensuring groups do not have more than 5 pax, and with at least 1m separation between groups throughout the attraction.<br/></span>
 
@@ -23,7 +23,7 @@ const InfoPrepareFacilities = () => {
                     
                     <span>8. For resumption of dining-in at F&B and indoor high-intensity activities where masks are not worn or where there is provision of common equipment, set-up and check the status of visitors as to whether they are fully vaccinated1 . Otherwise, F&B will only be allowed to operate take-away or delivery services, and indoor high-intensity activities where masks are not worn will not be allowed.<br/></span>
                     </p>
-                <h3 className="title-level3">Rides, Shows and Tours</h3>
+                <h3 id="InfoRideShowsTours" className="title-level3">Rides, Shows and Tours</h3>
                     <p>
                     <span>Develop and implement detailed plans for attendance management, crowd control and cleaning frequency for rides and shows:<br/></span>
 
@@ -44,7 +44,7 @@ const InfoPrepareFacilities = () => {
                     </span>
                     </p>
 
-                    <h4 className="title-level4">Indoor Shows</h4>
+                    <h4 id="InfoIndoorShows" className="title-level4">Indoor Shows</h4>
                         <p>
                         <span className="point">
                         • Adhere to IMDA’s prevailing advisory for Cinemas for indoor screenings.
@@ -59,7 +59,7 @@ const InfoPrepareFacilities = () => {
                         </span>
                         </p>
 
-                    <h4 className="title-level4">Outdoor Shows</h4>
+                    <h4 id="InfoOutdoorShows" className="title-level4">Outdoor Shows</h4>
                         <p>
                         <span>Capacity and Audience Separation<br/></span>
                         <span className="point">
@@ -79,14 +79,14 @@ const InfoPrepareFacilities = () => {
                         </span>
                         </p>
 
-                    <h4 className="title-level4">Live Performances</h4>
+                    <h4 id="InfoLivePerformances" className="title-level4">Live Performances</h4>
                         <p>
                         <span className="point">
                         • Adhere to NAC’s prevailing advisory for Live Performances, and any additional requirements imposed by MTI.
                         </span>
                         </p>
 
-                    <h4 className="title-level4">Tours</h4>
+                    <h4 id="InfoTours" className="title-level4">Tours</h4>
                         <p>
                         <span className="point">
                         • Adhere to STB’s prevailing circular for Tours5 where relevant, and any additional requirements imposed by MTI.
@@ -97,7 +97,7 @@ const InfoPrepareFacilities = () => {
                         </span>
                         </p>
 
-                <h3 className="title-level3">Work-Related Events</h3>
+                <h3 id="InfoWorkRelatedEvents" className="title-level3">Work-Related Events</h3>
                     <p>
                     <span>1. Some work-related events have been allowed to resume at workplace premises and third-party venues.<br/></span>
 
