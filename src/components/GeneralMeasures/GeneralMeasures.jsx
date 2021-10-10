@@ -4,6 +4,7 @@ import VerticalNavBarCovid from '../VerticalNavBar/VerticalNavBarCovid';
 import {Container, Row, Col} from 'react-bootstrap';
 import Footer from "../Footer/Footer";
 import InfoPrepareFacilities from './InfoPrepareFacilities';
+import InfoManagingArrival from './InfoManagingArrival';
 
 const GeneralMeasures = () => {
     return (
@@ -19,6 +20,7 @@ const GeneralMeasures = () => {
                     </Col>
                     <Col className="m-3">
                         <InfoPrepareFacilities />
+                        <InfoManagingArrival />
                     </Col>
                 </Row>
             </Container>

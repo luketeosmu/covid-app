@@ -2,11 +2,11 @@
     font-size: 25px;
     color: white;
     background-color: #2a2b52;
-    padding: 10px 10px;
+    padding: 10px 20px;
 }
 
 .title-level2{
-    margin-top: 20px;
+    margin-top: 30px;
     font-size: 22px;
     color: #14166b;
     font-weight: 600;
@@ -28,7 +28,7 @@
 }
 
 span{
-    margin-top: 15px;
+    margin-top: 25px;
     display: block;
     text-align: justify;
 }

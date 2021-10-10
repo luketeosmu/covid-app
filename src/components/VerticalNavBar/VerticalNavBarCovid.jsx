@@ -24,10 +24,10 @@ const VerticalNavBarCovid = () => {
             </Dropdown>
 
             <Dropdown as={NavItem}>
-            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Managing Arrival</Dropdown.Toggle>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}><a href="#InfoManagingArrival">Managing Arrival</a></Dropdown.Toggle>
             <Dropdown.Menu style = {{width: "280px"}}>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Health Checks and Contact Tracing</h2></a>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Managing Entry</h2></a>
+                <a href="#InfoHealthContactTrace"> <h2 className="title-level-2">Health Checks and Contact Tracing</h2></a>
+                <a href="#InfoManageEntry"> <h2 className="title-level-2">Managing Entry</h2></a>
             </Dropdown.Menu>
             </Dropdown>
 

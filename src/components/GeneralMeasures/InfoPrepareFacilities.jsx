@@ -2,7 +2,7 @@ import './Info.css'
 
 const InfoPrepareFacilities = () => {
     return (
-        <div>
+        <div style={{marginBottom:"50px"}}>
             <h1 id="InfoPrepareFacilities" className="title-level1">Preparing Facilities</h1>
             <h2 id="InfoAttractionsSetUp" className="title-level2">Attractions Set Up</h2>
                 <h3 id="InfoGeneral" className="title-level3">General</h3>
