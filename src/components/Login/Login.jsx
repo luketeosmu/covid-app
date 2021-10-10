@@ -34,7 +34,7 @@ export default function Login() {
             <NavBar />
             
             <Container className="LoginPage mt-5">
-                <h1 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Welcome to&nbsp;<span style={{color:'green'}}>COVID-TRACK</span>!</h1>
+                <h1 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Welcome to &nbsp; <span style={{color:'green', marginTop: "0px"}}> COVID-TRACK </span>!</h1>
                 <Form>
 
                     <Form.Group controlId="email" style={{width:"500px", margin:'auto'}}>

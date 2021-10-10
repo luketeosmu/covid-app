@@ -34,9 +34,9 @@ const RegisterBusiness = () => {
     return (
         <div>
             <NavBar />
-            <Container>
+            <Container style={{marginTop: "40px"}}>
                 <Card className="p-5">
-                    <h2 className="d-flex justify-content-center mb-4">
+                    <h2 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>
                         Let's add a few more details...
                     </h2>
                     <Form>

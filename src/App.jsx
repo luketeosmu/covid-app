@@ -30,7 +30,6 @@ function App() {
         <Route path='/login' exact component={Login}/>
         <Route path="/" exact component={Home} />
         <Route path='/register' exact component={RegisterUser}/>
-        {/* <Route path='/businesscategory' exact component={BusinessCat} /> */}
         <Route path='/businessform' exact component={RegisterBusiness} />
         <Route path='/employees' exact component={EmployeeList}/>
         <Route path='/forgotpassword' exact component={ForgotPassword}/>
