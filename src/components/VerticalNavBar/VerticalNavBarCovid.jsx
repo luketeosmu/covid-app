@@ -47,9 +47,9 @@ const VerticalNavBarCovid = () => {
             </Dropdown>
 
             <Dropdown as={NavItem}>
-            <Dropdown.Toggle as={NavLink} style={{color:"black"}}>Safe Workplace</Dropdown.Toggle>
+            <Dropdown.Toggle as={NavLink} style={{color:"black"}}><a href="#InfoSafeWorkplace">Safe Workplace</a></Dropdown.Toggle>
             <Dropdown.Menu style = {{width: "280px"}}>
-                <a href="#InfoPrepareFacilities"> <h2 className="title-level-2">Workplace and Manpower</h2></a>
+                <a href="#InfoWorkplaceManpower"> <h2 className="title-level-2">Workplace and Manpower</h2></a>
             </Dropdown.Menu>
             </Dropdown>
 

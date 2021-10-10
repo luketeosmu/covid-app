@@ -7,6 +7,7 @@ import InfoPrepareFacilities from './InfoPrepareFacilities';
 import InfoManagingArrival from './InfoManagingArrival';
 import InfoAttractionPlans from './InfoInAttractionPlans';
 import InfoInfectionControl from './InfoInfectionControl';
+import InfoSafeWorkplace from './InfoSafeWorkplace';
 
 const GeneralMeasures = () => {
     return (
@@ -25,6 +26,7 @@ const GeneralMeasures = () => {
                         <InfoManagingArrival />
                         <InfoAttractionPlans />
                         <InfoInfectionControl />
+                        <InfoSafeWorkplace />
                     </Col>
                 </Row>
             </Container>
