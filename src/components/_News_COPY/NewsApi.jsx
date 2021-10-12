@@ -31,7 +31,7 @@ const NewsApi = () => {
     }, []);
 
     if (error) return `Error: ${error.message}`;
-    if (!data) return null;
+    if (!data) return ( null );
 
     return (
         <div className="news-api">
@@ -47,9 +47,10 @@ const NewsApi = () => {
                 margin: '0px', 
                 fontSize: '20px', 
                 textAlign:'center'}}>
-                    LATEST COVID-19 NEWS - SINGAPORE
+                LATEST COVID-19 NEWS - SINGAPORE
             </h1>
 
+            { data.totalResults > 0 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -79,15 +80,17 @@ const NewsApi = () => {
                     <p style={{color:'#708090'}}>Description: {data.articles[0].description} (continue reading ...)</p>
                 </div>
             </div>
+            }
 
+            {data.totalResults > 1 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
                     paddingRight: '25px', 
                     borderRight: '1px black solid'
                 }}>
-                    <a href = {data.articles[6].url}>
-                        <img src = {data.articles[6].urlToImage} 
+                    <a href = {data.articles[1].url}>
+                        <img src = {data.articles[1].urlToImage} 
                         style={{
                             height: '200px',
                             width: '300px',
@@ -103,13 +106,15 @@ const NewsApi = () => {
                         fontSize: '25px',
                         marginBottom: '10px'
                     }}>
-                        {data.articles[6].title}
+                        {data.articles[1].title}
                     </h2>
 
-                    <p style={{color:'#708090'}}>Description: {data.articles[6].description} (continue reading ...)</p>
+                    <p style={{color:'#708090'}}>Description: {data.articles[1].description} (continue reading ...)</p>
                 </div>
             </div>
+            }
 
+            {data.totalResults > 2 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -139,7 +144,9 @@ const NewsApi = () => {
                     <p style={{color:'#708090'}}>Description: {data.articles[2].description} (continue reading ...)</p>
                 </div>
             </div>
+            }
 
+            {data.totalResults > 3 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -169,7 +176,9 @@ const NewsApi = () => {
                     <p style={{color:'#708090'}}>Description: {data.articles[3].description} (continue reading ...)</p>
                 </div>
             </div>
+            }
 
+            {data.totalResults > 4 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -199,6 +208,11 @@ const NewsApi = () => {
                     <p style={{color:'#708090'}}>Description: {data.articles[4].description} (continue reading ...)</p>
                 </div>
             </div>
+            }
+
+            { data.totalResults < 5 &&
+                <div style={{color: "red", height: "50vh"}}> No covid-19 news at the moments :) </div>
+            }
             </Container>
         </div>
         
