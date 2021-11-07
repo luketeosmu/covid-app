@@ -35,11 +35,11 @@ const RegisterUser = () => {
         <div>
             <NavBar />
             <Container>
-                <Card className="p-5">
-                    <h2 className="d-flex justify-content-center mb-4">Let's set up your user account...</h2>
+                <Card className="p-5" style={{marginTop: "40px"}}>
+                    <h2 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Let's set up your user account!</h2>
                     <Form>
                         <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label>Email Address</Form.Label>
                             <Form.Control required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter your email..." />
                         </Form.Group>
 

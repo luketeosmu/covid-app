@@ -1,0 +1,40 @@
+.title-level1{
+    font-size: 25px;
+    color: white;
+    background-color: #2a2b52;
+    padding: 10px 20px;
+}
+
+.title-level2{
+    margin-top: 30px;
+    font-size: 22px;
+    color: #14166b;
+    font-weight: 600;
+    text-align: center;
+}
+
+.title-level3 {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #696b6d;
+}
+
+.title-level4 {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #696b6d;
+}
+
+span{
+    margin-top: 25px;
+    display: block;
+    text-align: justify;
+}
+
+.point{
+    display: block; 
+    margin-left: 40px; 
+}
+
