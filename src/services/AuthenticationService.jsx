@@ -4,7 +4,7 @@ const REGISTER_API_URL = "http://localhost:8080/users"
 const AUTH_API_URL = "http://localhost:8080/users/search"
 
 class AuthenticationService {
-    registerUser = (user) => {
+    registerUser = async (user) => {
         return axios
             .post(REGISTER_API_URL, user)
             .then((response) => {
@@ -23,7 +23,7 @@ class AuthenticationService {
 //then store business under user, and sign out.
 
     registerBusiness = async (business) => {
-        return await axios
+        return axios
             .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
             business,
                 { headers: 
@@ -43,7 +43,7 @@ class AuthenticationService {
             })
     }
 
-    authenticate = (user) => {
+    authenticate = async (user) => {
         return axios
             .post(AUTH_API_URL, user)
             .then((response) => {
@@ -58,8 +58,8 @@ class AuthenticationService {
     };
 
     signOut() {
-        localStorage.clear();
-        // localStorage.removeItem("user");
+        // localStorage.clear();
+        localStorage.removeItem("user");
     }
 
     getCurrentUser() {
@@ -67,7 +67,10 @@ class AuthenticationService {
     }
 
     isLoggedIn() {
-        return localStorage.getItem("user") ? true : false
+        if (localStorage.getItem("user") === null) {
+            return false
+        }
+        return true
     }
 }
 
