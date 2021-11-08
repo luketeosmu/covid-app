@@ -210,7 +210,7 @@ const NewsApi = () => {
             </div>
             }
 
-            { data.totalResults < 5 &&
+            { data.totalResults == 0 &&
                 <div style={{color: "red", height: "50vh"}}> No covid-19 news at the moments :) </div>
             }
             </Container>

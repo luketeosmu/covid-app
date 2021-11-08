@@ -14,36 +14,57 @@ import {
 } from "react-bootstrap";
 import "./EmployeeList.css";
 import NavBar from "../../NavBar/NavBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../../Footer/Footer";
+import EmployeeService from '../../../services/EmployeeService';
+import FETTesting from "../../FETTesting/FETTesting";
 
 const EmployeeList = () => {
-  const employees = [
-    { id: 12, name: "Otto", status: true },
-    { id: 34, name: "John", status: false },
-    { id: 45, name: "Mary", status: true },
-    { id: 56, name: "Steve", status: false },
-    { id: 78, name: "Kang", status: false },
-    { id: 90, name: "Roys", status: false },
-    { id: 321, name: "Jian Yi", status: true },
-    { id: 324, name: "Yash", status: false },
-    { id: 656, name: "Luke", status: true },
-    { id: 767, name: "Shaun", status: true },
-    { id: 986, name: "Sean", status: true },
-    { id: 4213, name: "Josh", status: true },
-    { id: 5739, name: "Rahmat", status: true },
-    { id: 7683, name: "Otto", status: false },
-    { id: 9778, name: "Jennifer", status: true },
-    { id: 12487, name: "William", status: true },
-  ];
+  const [employees, setEmployees] = useState([]);
+  useEffect(() => {
+    // console.log("hi")
+    EmployeeService.getEmployees().then(() => { setEmployees(JSON.parse(localStorage.getItem("employees"))) })
+    // ((res) => {
+    //   if(localStorage.getItem("employees") == null){
+
+    //   }
+    // })
+  })
 
   const [employeeId, setEmployeeId] = useState(0);
   const [employeeName, setEmployeeName] = useState("");
-  const [employeeStatus, setEmployeeStatus] = useState(false);
+  const [employeeStatus, setEmployeeStatus] = useState(true);
   const [employeeFET, setEmployeeFET] = useState("");
   function validateForm() {
     return employeeId !== 0 && employeeName.length > 0;
   }
+
+  const addEmployee = (e) => {
+    e.preventDefault();
+    let employee = {
+      id: employeeId,
+      name: employeeName,
+      vaxStatus: employeeStatus,
+      fetDate: employeeFET
+    };
+    console.log(employee);
+
+    EmployeeService.addEmployee(employee)
+      .then((res) => {
+        // history.push({
+        //   pathname: "/businessform",
+        // });
+        handleClose();
+      });
+  };
+
+  const deleteEmployee = (e) => {
+    EmployeeService.deleteEmployee(tempId)
+    .then((res) => {
+      handleNoDelete();
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
   }
@@ -54,6 +75,17 @@ const EmployeeList = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [warning, setWarning] = useState(false);
+  const [tempId, setTempId] = useState(-1);
+
+  const handleNoDelete = () => {
+    setWarning(false);
+    setTempId(-1);
+  }
+  const handleDelete = (id) => {
+    setWarning(true);
+    setTempId(id);
+  }
   const renderTooltip = (props) => (
     <Tooltip className="me-2" id="button-tooltip" {...props}>
       Add New Employee
@@ -103,6 +135,8 @@ const EmployeeList = () => {
                   <th>Employee ID</th>
                   <th>Employee Name</th>
                   <th>Vaccinated?</th>
+                  <th>Next FET Test</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -121,13 +155,13 @@ const EmployeeList = () => {
                     ) {
                       return employee;
                     } else if (
-                      employee.status == true &&
+                      employee.vaxStatus == true &&
                       (searchTerm.toLowerCase() == "yes" ||
                         searchTerm.toLowerCase() == "vaccinated")
                     ) {
                       return employee;
                     } else if (
-                      employee.status == false &&
+                      employee.vaxStatus == false &&
                       (searchTerm.toLowerCase() == "no" ||
                         searchTerm.toLowerCase() == "unvaccinated")
                     ) {
@@ -138,17 +172,30 @@ const EmployeeList = () => {
                     <tr key={employee.id}>
                       <td>{employee.id}</td>
                       <td>{employee.name}</td>
-                      <td>{employee.status ? "Yes" : "No"}</td>
+                      <td>{employee.vaxStatus ? "Yes" : "No"}</td>
+                      <td>{employee.fetDate}</td>
+                      <td><button onClick={() => handleDelete(employee.id)} style={{ border: "none", backgroundColor: "transparent" }}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+                      </svg></button></td>
                     </tr>
                   ))}
-                {/* <tr>
-                                <td>69420</td>
-                                <td>Otto</td>
-                                <td>Vaccinated</td>
-                            </tr> */}
               </tbody>
             </Table>
           </div>
+          <Modal show={warning} onHide={handleNoDelete} centered>
+            <Modal.Header className="justify-content-center">
+              <Modal.Title>Warning</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p className="text-center pt-3">Are you sure you wish to remove this employee?</p>
+            </Modal.Body>
+
+            <Modal.Footer className="d-flex justify-content-center">
+              <Button onClick={handleNoDelete} className="ps-4 pe-4"variant="danger">No</Button>
+              <Button onClick={deleteEmployee} className="ps-4 pe-4" variant="success">Yes</Button>
+            </Modal.Footer>
+          </Modal>
         </Container>
         <Container className="mb-5 fixed-bottom text-end">
           <OverlayTrigger
@@ -182,7 +229,7 @@ const EmployeeList = () => {
             </Button>
           </OverlayTrigger>
           <Modal show={show} onHide={handleClose} centered>
-            <Modal.Header>
+            <Modal.Header closeButton>
               <Modal.Title className="ms-4">Add New Employee</Modal.Title>
               {/* <CloseButton /> doesnt work */}
             </Modal.Header>
@@ -196,6 +243,8 @@ const EmployeeList = () => {
                   <Form.Control
                     type="number"
                     placeholder="e.g. 012345"
+                    value={employeeId}
+                    onChange={(e) => setEmployeeId(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -207,6 +256,8 @@ const EmployeeList = () => {
                   <Form.Control
                     type="text"
                     placeholder="e.g. John Smith"
+                    value={employeeName}
+                    onChange={(e) => setEmployeeName(e.target.value)}
                     required
                   />
                 </Form.Group>
@@ -220,6 +271,7 @@ const EmployeeList = () => {
                     label="Vaccinated"
                     name="vacRadio"
                     id="vac"
+                    onChange={() => setEmployeeStatus(true)}
                     required
                   />
                   <Form.Check
@@ -227,6 +279,7 @@ const EmployeeList = () => {
                     label="Unvaccinated"
                     name="vacRadio"
                     id="unvac"
+                    onChange={() => setEmployeeStatus(false)}
                     required
                   />
                 </Form.Group>
@@ -235,17 +288,14 @@ const EmployeeList = () => {
                   controlId="exampleForm.ControlInput2"
                 >
                   <Form.Label>Upcoming FET Testing Date</Form.Label>
-                  <Form.Control type="date" />
+                  <Form.Control type="date" onChange={(e) => setEmployeeFET(e.target.value)} />
                 </Form.Group>
               </Form>
             </Modal.Body>
             <Modal.Footer className="me-4">
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
               <Button
                 variant="success"
-                onClick={handleClose}
+                onClick={addEmployee}
                 disabled={!validateForm()}
               >
                 Submit

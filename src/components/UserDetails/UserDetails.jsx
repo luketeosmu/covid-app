@@ -11,15 +11,12 @@ const UserDetails = () => {
 
             <Container>
                 <Row className="bg-light mt-3 mb-3 pt-3 pb-2">
-                    <h1 style={{fontSize: "20px", fontWeight:"500"}}>User Accounts</h1>
+                    <h1 className="ps-5" style={{fontSize: "20px", fontWeight:"500"}}>User Account Details</h1>
                 </ Row>
                 <Row>
-                    <Col className="bg-dark" xs={2}>
-                        <VerticalNavBarUser />
-                    </Col>
-                    <Col style={{background : "grey"}} className="ms-3">
-                        <UserInformation />
-                    </Col>
+                    <div className="bg-light">
+                        < UserInformation />
+                    </div>
                 </Row>
             </Container>
             <Footer />

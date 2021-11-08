@@ -32,7 +32,7 @@ const NavBar = () => {
               align="start"
               id="collapsible-nav-dropdown"
             >
-              <NavDropdown.Item href="#maccount">
+              <NavDropdown.Item href="userdetails">
                 Manage Account
               </NavDropdown.Item>
               <NavDropdown.Item href="#mbusiness">

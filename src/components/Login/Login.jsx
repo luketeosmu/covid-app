@@ -19,6 +19,10 @@ export default function Login() {
         let user = {
             username: email,
             password: password,
+            fetConfig: 0,
+            authorities: "",
+            firstName: "",
+            lastName: ""
         };
 
         AuthenticationService.authenticate(user)

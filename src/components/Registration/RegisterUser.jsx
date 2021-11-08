@@ -19,7 +19,8 @@ const RegisterUser = () => {
             password: password,
             firstName: firstName,
             lastName: lastName,
-            authorities: "ROLE_USER"
+            authorities: "ROLE_USER",
+            fetConfig: 7,
         };
 
         AuthenticationService.registerUser(user)

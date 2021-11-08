@@ -22,14 +22,14 @@ class AuthenticationService {
   //store user after registering, register business and use id from local storage
   //then store business under user, and sign out.
 
-  registerBusiness = async (business) => {
+  registerBusiness = async (business) => { //somehow need to pull user from registerUser
     return axios
       .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
         business,
         {
           auth: {
             username: `${JSON.parse(localStorage.getItem("user")).username}`,
-            password: "Tester123",
+            password: "Tester123", //ask them for password again, error is 401 unauthenticated
           },
         }
       )
@@ -55,9 +55,37 @@ class AuthenticationService {
       });
   };
 
+  updateUser = async(user) => {
+    return axios
+      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}`, user)
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data));
+        console.log(localStorage.getItem("user"))
+      })
+  }
+
+  updateUserPassword = async(user, oldPassword) => {
+    console.log(JSON.parse(localStorage.getItem("user")).username)
+    console.log(oldPassword)
+    return axios
+      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/changePassword`, user,
+      {
+        auth: {
+          username: `${JSON.parse(localStorage.getItem("user")).username}`,
+          password: oldPassword
+        }
+      }
+    )
+    .then((response) => {
+      localStorage.setItem("user", JSON.stringify(response.data))
+      console.log(localStorage.getItem("user"))
+    })
+  }
+
   signOut() {
     // localStorage.clear();
     localStorage.removeItem("user");
+    localStorage.removeItem("employees");
   }
 
   getCurrentUser() {

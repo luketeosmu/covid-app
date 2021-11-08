@@ -1,4 +1,7 @@
+import EmployeeService from '../../services/EmployeeService';
 import './Info.css'
+import { useState, useEffect } from 'react';
+import AuthenticationService from '../../services/AuthenticationService';
 
 const InfoAttractionPlans = () => {
     return (
