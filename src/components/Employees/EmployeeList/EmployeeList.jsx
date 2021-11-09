@@ -130,7 +130,7 @@ const EmployeeList = () => {
         <Container>
           <div className="Table mb-5">
             <Table striped bordered hover>
-              <thead>
+              {employees.length != 0 && <thead>
                 <tr>
                   <th>Employee ID</th>
                   <th>Employee Name</th>
@@ -138,7 +138,7 @@ const EmployeeList = () => {
                   <th>Next FET Test</th>
                   <th></th>
                 </tr>
-              </thead>
+              </thead>}
               <tbody>
                 {employees
                   .filter((employee) => {
@@ -182,6 +182,9 @@ const EmployeeList = () => {
               </tbody>
             </Table>
           </div>
+          {employees.length == 0 &&
+            <div style={{ height: "50vh" }}> No Employees to show. Add an Employee with the '+' button to get started! </div>
+          }
           <Modal show={warning} onHide={handleNoDelete} centered>
             <Modal.Header className="justify-content-center">
               <Modal.Title>Warning</Modal.Title>
