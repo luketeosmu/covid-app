@@ -35,9 +35,9 @@ const NavBar = () => {
               <NavDropdown.Item href="userdetails">
                 Manage Account
               </NavDropdown.Item>
-              {/* <NavDropdown.Item href="#mbusiness">
+              <NavDropdown.Item href="businessdetails">
                 Manage Business
-              </NavDropdown.Item> */}
+              </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="login" onClick={logOut}>Logout</NavDropdown.Item>
             </NavDropdown>

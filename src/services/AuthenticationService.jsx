@@ -9,10 +9,11 @@ class AuthenticationService {
       .post(REGISTER_API_URL, user)
       .then((response) => {
         localStorage.clear();
+        localStorage.setItem("tempPass", user.password);
         localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("notLoggedIn", "")
         // console.log(localStorage.getItem("user"));
         // return response.data;
-        console.log(JSON.parse(localStorage.getItem("user")).id);
       })
       .catch((err) => {
         console.log(err);
@@ -24,13 +25,14 @@ class AuthenticationService {
   //then store business under user, and sign out.
 
   registerBusiness = async (business) => { //somehow need to pull user from registerUser
+    console.log(localStorage.getItem("tempPass"))
     return axios
       .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
         business,
         {
           auth: {
             username: `${JSON.parse(localStorage.getItem("user")).username}`,
-            password: "Tester123", //ask them for password again, error is 401 unauthenticated
+            password: `${localStorage.getItem("tempPass")}`,
           },
         }
       )
@@ -111,6 +113,8 @@ class AuthenticationService {
 
   signOut() {
     // localStorage.clear();
+    localStorage.removeItem("notLoggedIn")
+    localStorage.removeItem("tempPass")
     localStorage.removeItem("user");
     localStorage.removeItem("employees");
   }
@@ -120,7 +124,7 @@ class AuthenticationService {
   }
 
   isLoggedIn() {
-    if (localStorage.getItem("user") === null) {
+    if (localStorage.getItem("user") === null || localStorage.getItem("notLoggedIn") == "") {
       return false;
     }
     return true;

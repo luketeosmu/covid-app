@@ -73,7 +73,7 @@ const RegisterUser = () => {
                 <Card className="p-5" style={{marginTop: "40px"}}>
                     <h2 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Let's set up your user account!</h2>
                     <Alert className="mb-4" style={{ width: "600px", margin: 'auto' }} show={showAlert} variant="danger" onClose={handleNotShowAlert}>
-                        <p className="mb-0">One or more fields have been entered incorrectly. Please try again.</p>
+                        <p className="mb-0">The email address you entered may be in use. Please ensure that all fields are entered correctly and try again.</p>
                     </Alert>
                     <Form>
                         <Form.Group className="mb-3">

@@ -14,6 +14,7 @@ import UserDetails from './components/UserDetails/UserDetails';
 import NewsApi from "./components/_News_COPY/NewsApi";
 // import BusinessCat from "./components/Registration/BusinessCat";
 import RegisterBusiness from "./components/Registration/RegisterBusiness";
+import BusinessDetails from "./components/BusinessDetails/BusinessDetails";
 
 // import VerticalNavBarCovid from './components/VerticalNavBar/VerticalNavBarCovid';
 // import UserInformation from './components/UserDetails/UserInfomation';
@@ -39,6 +40,7 @@ function App() {
         <PrivateRoute path = "/userdetails" exact component = {UserDetails}/>
         <PrivateRoute path = "/fettest" exact component = {FETTesting}/>
         <PrivateRoute path = '/testingnewsapi' exact component = {NewsApi}/>
+        <PrivateRoute path = '/businessdetails' exact component = {BusinessDetails}/>
       </Switch>
     </Router>
   );
