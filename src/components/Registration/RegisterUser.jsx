@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router'
 import NavBar from '../NavBar/NavBar'
-import { Card, Container, Row, Form, Col, Button, Modal, Alert } from 'react-bootstrap'
+import { Card, Container, Row, Form, Col, Button, Modal, Alert} from 'react-bootstrap'
 import AuthenticationService from '../../services/AuthenticationService'
 
 const RegisterUser = () => {
@@ -10,26 +10,28 @@ const RegisterUser = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
-    const [showAlert, setAlert] = useState(false)
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [showPasswordAlert, setPasswordAlert] = useState(false);
+    
 
-    const handleShowAlert = () => {
-        setAlert(true);
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const handleShowPasswordAlert = () => {
+        setPasswordAlert(true);
     }
 
-    const handleNotShowAlert = () => {
-        setAlert(false);
+    const handleNotShowPasswordAlert = () => {
+        setPasswordAlert(false);
     }
 
     const handleVerifyNewPassword = (e) => {
         if(password !== confirmPassword) {
-            handleShowAlert();
+            handleShowPasswordAlert();
         } else {
             register(e);
         }
     }
 
+   
     const [showAlert, setShowAlert] = useState(false);
 
     const handleShowAlert = () => {
@@ -113,10 +115,10 @@ const RegisterUser = () => {
                     </Form>
                 </Card>
 
-                <Modal show={showAlert} onHide={handleNotShowAlert} centered style={{height:"25%"}}>
+                <Modal show={showPasswordAlert} onHide={handleNotShowPasswordAlert} centered style={{height:"25%"}}>
                     <div class="alert alert-danger" role="alert" style={{marginBottom:"0px"}}>
                         <h5 style={{fontSize:"15px", fontFamily:"sans-serif", marginBottom:"mb-5"}}>Warning: Your New Passwords do not match. Please try again.</h5>
-                        <Button className="ps-4 pe-4" variant="success" onClick={handleNotShowAlert}>Ok</Button>
+                        <Button className="ps-4 pe-4" variant="success" onClick={handleNotShowPasswordAlert}>Ok</Button>
                     </div>
                 </Modal>
             </Container>
