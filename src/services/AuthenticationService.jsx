@@ -44,6 +44,22 @@ class AuthenticationService {
       });
   };
 
+  getBusiness = async() => {
+    return axios
+      .get(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`)
+      .then((response) => {
+        localStorage.setItem("business", JSON.stringify(response.data[0]))
+      })
+  }
+
+  updateBusines = async(business) => {
+    return axios
+      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses/${JSON.parse(localStorage.getItem("business"))}`, business)
+      .then((response) => {
+        localStorage.setItem("business", JSON.stringify(response.data))
+      })
+  }
+
   authenticate = async (user) => {
     return axios
       .post(AUTH_API_URL, user)
@@ -117,10 +133,15 @@ class AuthenticationService {
     localStorage.removeItem("tempPass")
     localStorage.removeItem("user");
     localStorage.removeItem("employees");
+    localStorage.removeItem("business")
   }
 
   getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"));
+  }
+
+  getCurrentUserBusiness() {
+    return JSON.parse(localStorage.getItem("business"));
   }
 
   isLoggedIn() {

@@ -303,7 +303,7 @@ const UserInformation = () => {
                                 <Form.Label>New First Name</Form.Label>
                                 <Form.Control 
                                     type="text"
-                                    placeholder="John"
+                                    placeholder="e.g. John"
                                     value={newFirstName}
                                     onChange={(e) => setNewFirstName(e.target.value)}
                                 />
@@ -325,7 +325,7 @@ const UserInformation = () => {
                                 <Form.Label>New Last Name</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="Smith"
+                                    placeholder="e.g. Smith"
                                     value={newLastName}
                                     onChange={(e) => setNewLastName(e.target.value)}
                                 />
@@ -350,7 +350,7 @@ const UserInformation = () => {
                                 <Form.Label>New Email</Form.Label>
                                 <Form.Control
                                     type="email"
-                                    placeholder="johnsmith@gmail.com"
+                                    placeholder="e.g. johnsmith@gmail.com"
                                     value={newEmail}
                                     onChange={(e) => setNewEmail(e.target.value)}
                                 />
