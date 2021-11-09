@@ -1,11 +1,11 @@
 import axios from "axios";
 
-// const GET_EMPLOYEE_API_URL = "http://54.225.36.72:8080/users";
+// const GET_EMPLOYEE_API_URL = "http://localhost:8080/users";
 
 class EmployeeService {
     getEmployees = async () => {
         return axios
-            .get(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees`)
+            .get(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees`)
             .then((response) => {
                 // console.log(localStorage.getItem("employees"));
                 localStorage.setItem("employees", JSON.stringify(response.data));
@@ -18,7 +18,7 @@ class EmployeeService {
 
     getExpiredEmployees = async () => {
         return axios
-            .get(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/expired`)
+            .get(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/expired`)
             .then((response) => {
                 // console.log(localStorage.getItem("employees"));
                 localStorage.setItem("expiredEmployees", JSON.stringify(response.data));
@@ -32,7 +32,7 @@ class EmployeeService {
 
     updateEmployee = async(employee) => {
         return axios
-            .put(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/${employee.id}`, employee)
+            .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/${employee.id}`, employee)
             .catch((err) => {
                 console.log(err);
                 throw err;
@@ -41,7 +41,7 @@ class EmployeeService {
 
     deleteEmployee = async(id) => {
         return axios
-            .delete(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/${id}`)
+            .delete(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/${id}`)
             .catch((err) => {
                 console.log(err);
                 throw err;
@@ -50,7 +50,7 @@ class EmployeeService {
 
     addEmployee = async(employee) => {
         return axios
-            .post(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees`, employee)
+            .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees`, employee)
             .catch((err) => {
                 console.log(err);
                 // throw err;

@@ -1,7 +1,7 @@
 // import axios from "axios";
 // import authHeader from "../util/authHeader";
 
-// const GET_PROFILE_URL = `http://54.225.36.72:8080/get-profile`;
+// const GET_PROFILE_URL = `http://localhost:8080/get-profile`;
 
 // class UserService {
 //     // Put profile in local storage

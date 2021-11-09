@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const REGISTER_API_URL = "http://54.225.36.72:8080/users";
-const AUTH_API_URL = "http://54.225.36.72:8080/users/search";
+const REGISTER_API_URL = "http://localhost:8080/users";
+const AUTH_API_URL = "http://localhost:8080/users/search";
 
 class AuthenticationService {
   registerUser = async (user) => {
@@ -25,7 +25,7 @@ class AuthenticationService {
 
   registerBusiness = async (business) => { //somehow need to pull user from registerUser
     return axios
-      .post(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
+      .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
         business,
         {
           auth: {
@@ -59,7 +59,7 @@ class AuthenticationService {
 
   updateUser = async(user) => {
     return axios
-      .put(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}`, user)
+      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}`, user)
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         console.log(localStorage.getItem("user"))
@@ -73,7 +73,7 @@ class AuthenticationService {
     console.log(JSON.parse(localStorage.getItem("user")).username)
     console.log(oldPassword)
     return axios
-      .put(`http://54.225.36.72:8080/users/${JSON.parse(localStorage.getItem("user")).id}/changePassword`, user,
+      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/changePassword`, user,
       {
         auth: {
           username: `${JSON.parse(localStorage.getItem("user")).username}`,
