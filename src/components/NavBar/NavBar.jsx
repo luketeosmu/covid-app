@@ -17,7 +17,7 @@ const NavBar = () => {
   return AuthenticationService.isLoggedIn() ? (
     <Navbar collapseOnSelect bg="light" variant="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Covid App</Navbar.Brand>
+        <Navbar.Brand href="/">COVID-TRACK</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

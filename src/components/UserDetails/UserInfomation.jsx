@@ -152,36 +152,42 @@ const UserInformation = () => {
 
     return ( 
         <div style={{ height: "70vh" }} className="p-0">
-            <h1 style={{ fontSize: "20px", fontWeight: "500" }} className="ms-5 m-4">Update User Details</h1>
+            <div>
+                <h1 style={{ fontSize: "20px", fontWeight: "500" }} className="ms-5 m-4 text-center">Update User Details</h1>
+                <hr />
+            </div>
             <Container>
                 <ul style={{fontSize : "18px", listStyle: "none"}}>
                     <li className="mt-4 mb-3"> 
                         <p><strong>First Name: </strong>{firstName}</p>
-                            <button onClick={handleShowFirstNameForm}>Edit First Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <button className="p-2"style={{border: "none"}} onClick={handleShowFirstNameForm}>Edit First Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg></button>
                     </li>
                     <li className="mb-3"> 
                         <p><strong>Last Name: </strong>{lastName}</p>
-                        <button onClick={handleShowLastNameForm}>Edit Last Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2" style={{ border: "none" }} onClick={handleShowLastNameForm}>Edit Last Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                         </svg></button>
                     </li>
                     <li className="mb-3"> 
                         <p><strong>Email: </strong>{email}</p>
-                        <button onClick={handleShowEmailForm}>Edit Email <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2" style={{ border: "none" }} onClick={handleShowEmailForm}>Edit Email <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                         </svg></button>
                     </li>
+                    <li>
+                        <button className="p-2 mt-4" style={{ border: "none" }} onClick={handleShowForm}>
+                            Change Password <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                            </svg>
+                        </button>
+                    </li>
                 </ul>
-            </Container>
-            <Container className="mt-4 ms-4">
-                <Button onClick = {handleShowForm}>
-                    Click here to Change Password
-                </Button>
             </Container>
             <Container>
                 <Modal show={showForm} onHide={() => handleCloseForm()} centered>
@@ -224,7 +230,7 @@ const UserInformation = () => {
                     </Modal.Footer>
                 </Modal>
                 <Modal show={showFirstNameForm} onHide={handleCloseFirstNameForm} centered>
-                    <Modal.Header>
+                    <Modal.Header className="justify-content-center">
                         <Modal.Title>Update First Name</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -246,7 +252,7 @@ const UserInformation = () => {
                     </Modal.Footer>
                 </Modal>
                 <Modal show={showLastNameForm} onHide={handleCloseLastNameForm} centered>
-                    <Modal.Header>
+                    <Modal.Header className="justify-content-center">
                         <Modal.Title>Update Last Name</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -268,7 +274,7 @@ const UserInformation = () => {
                     </Modal.Footer>
                 </Modal>
                 <Modal show={showEmailForm} onHide={handleCloseEmailForm} centered>
-                    <Modal.Header>
+                    <Modal.Header className="justify-content-center">
                         <Modal.Title>Update Email</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
