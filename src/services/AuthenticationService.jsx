@@ -90,6 +90,25 @@ class AuthenticationService {
     })
   }
 
+  deleteUser = async(inputPassword) => {
+    console.log(JSON.parse(localStorage.getItem("user")).id)
+    return axios
+      .delete(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}`,
+        {
+          auth: {
+            username: `${JSON.parse(localStorage.getItem("user")).username}`,
+            password: inputPassword
+          }
+        }
+      )
+      .then((response) => {
+        this.signOut();
+      })
+      .catch((err) => {
+        return "wrongPassword";
+      })
+  }
+
   signOut() {
     // localStorage.clear();
     localStorage.removeItem("user");

@@ -1,5 +1,6 @@
 import { Container, Modal, Button, Form, Alert } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import AuthenticationService from '../../services/AuthenticationService';
 
 
@@ -11,6 +12,8 @@ const UserInformation = () => {
         setPassword(AuthenticationService.getCurrentUser().password)
         setFetConfig(AuthenticationService.getCurrentUser().fetConfig);
     })
+    const history = useHistory();
+
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
@@ -172,6 +175,37 @@ const UserInformation = () => {
         setShowDupEmail(false);
     }
 
+    //delete account
+    const [deleteWarning, setDeleteWarning] = useState(false);
+    const [wrongPassDelete, setWrongPassDelete] = useState(false);
+    const [deletePassword, setDeletePassword] = useState("")
+
+    const deleteAccount = () => {
+        AuthenticationService.deleteUser(deletePassword).then((res) => {
+            if(res == "wrongPassword"){
+                //show alert
+                handleShowWrongPassDelete();
+            } else {
+                // handleCloseDeleteWarning();
+                history.push({
+                    pathname: "/login"
+                })
+            }
+        })
+    }
+
+    const handleDeleteWarning = () => {
+        setDeleteWarning(true);
+    }
+
+    const handleCloseDeleteWarning = () => {
+        setDeleteWarning(false);
+    }
+
+    const handleShowWrongPassDelete = () => {
+        setWrongPassDelete(true);
+    }
+
 
     return ( 
         <div style={{ height: "70vh" }} className="p-0">
@@ -183,28 +217,28 @@ const UserInformation = () => {
                 <ul style={{fontSize : "18px", listStyle: "none"}}>
                     <li className="mt-4 mb-3"> 
                         <p><strong>First Name: </strong>{firstName}</p>
-                            <button className="p-2"style={{border: "none"}} onClick={handleShowFirstNameForm}>Edit First Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2" style={{ border: "none", borderRadius: "10px"}} onClick={handleShowFirstNameForm}>Edit First Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg></button>
                     </li>
                     <li className="mb-3"> 
                         <p><strong>Last Name: </strong>{lastName}</p>
-                        <button className="p-2" style={{ border: "none" }} onClick={handleShowLastNameForm}>Edit Last Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2" style={{ border: "none", borderRadius: "10px" }} onClick={handleShowLastNameForm}>Edit Last Name <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                         </svg></button>
                     </li>
                     <li className="mb-3"> 
                         <p><strong>Email: </strong>{email}</p>
-                        <button className="p-2" style={{ border: "none" }} onClick={handleShowEmailForm}>Edit Email <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2" style={{ border: "none", borderRadius: "10px" }} onClick={handleShowEmailForm}>Edit Email <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                         </svg></button>
                     </li>
                     <li>
-                        <button className="p-2 mt-4" style={{ border: "none" }} onClick={handleShowForm}>
-                            Change Password <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <button className="p-2 mt-4" style={{ border: "none", borderRadius: "10px"}} onClick={handleShowForm}>
+                            Change Password <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                             </svg>
@@ -212,6 +246,11 @@ const UserInformation = () => {
                     </li>
                 </ul>
             </Container>
+            <div className="text-center">
+                <Button variant="danger" onClick={handleDeleteWarning}>
+                    Delete Account
+                </Button>
+            </div>
             <Container>
                 <Modal show={showForm} onHide={() => handleCloseForm()} centered>
                     <Modal.Header className="justify-content-center">
@@ -323,7 +362,33 @@ const UserInformation = () => {
                         <Button className="ps-4 pe-4" variant="success" onClick={updateEmail}>Save</Button>
                     </Modal.Footer>
                 </Modal>
-
+                <Modal show={deleteWarning} onHide={handleCloseDeleteWarning} centered>
+                    <Modal.Header className="justify-content-center">
+                        <Modal.Title>Warning</Modal.Title>
+                    </Modal.Header>
+                    <Alert style={{ width: "500px", margin: 'auto' }} show={wrongPassDelete} variant="danger">
+                        <p className="mb-0">The password you entered is incorrect. Please try again.</p>
+                    </Alert>
+                    <Modal.Body>
+                        <p className="text-center pt-3">Warning - clicking 'Yes' will <strong>delete</strong> your account permanently. Are you sure you wish to do this?</p>
+                        <p className="text-center pt-3">(This action is irreversible!)</p>
+                        <Form className="m-5">
+                            <Form.Label>
+                                Enter your password to continue:
+                            </Form.Label>
+                            <Form.Control 
+                                type="password"
+                                value={deletePassword}
+                                onChange={(e) => setDeletePassword(e.target.value)}
+                            />
+                        </Form>
+                    </Modal.Body>
+                    <Modal.Footer className="d-flex justify-content-center">
+                        <Button onClick={handleCloseDeleteWarning} className="ps-4 pe-4" variant="danger">No</Button>
+                        <Button onClick={deleteAccount} className="ps-4 pe-4" variant="success">Yes</Button>
+                    </Modal.Footer>
+                </Modal>
+                
 
 
                 <Modal show={showAlert} onHide={handleNotShowAlert} centered style={{height:"25%"}}>
