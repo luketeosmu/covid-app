@@ -52,7 +52,7 @@ class AuthenticationService {
       })
   }
 
-  updateBusines = async(business) => {
+  updateBusiness = async(business) => {
     return axios
       .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses/${JSON.parse(localStorage.getItem("business"))}`, business)
       .then((response) => {

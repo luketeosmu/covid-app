@@ -6,10 +6,12 @@ import AuthenticationService from '../../services/AuthenticationService'
 const BusinessInformation = () => {
     useEffect(() => {
         AuthenticationService.getBusiness();
-        setBusinessName(AuthenticationService.getCurrentUserBusiness().businessName);
-        setCategory(AuthenticationService.getCurrentUserBusiness().category);
-        setOutdoorIndoor(AuthenticationService.getCurrentUserBusiness().outdoorIndoor);
-        setCapacity(AuthenticationService.getCurrentUserBusiness().capacity);
+        if(AuthenticationService.getCurrentUserBusiness() != null){
+            setBusinessName(AuthenticationService.getCurrentUserBusiness().businessName);
+            setCategory(AuthenticationService.getCurrentUserBusiness().category);
+            setOutdoorIndoor(AuthenticationService.getCurrentUserBusiness().outdoorIndoor);
+            setCapacity(AuthenticationService.getCurrentUserBusiness().capacity);
+        }
     })
     const [businessName, setBusinessName] = useState("")
     const [category, setCategory] = useState("")
