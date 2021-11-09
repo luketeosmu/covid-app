@@ -152,7 +152,7 @@ const UserInformation = () => {
 
     return ( 
         <div style={{ height: "70vh" }} className="p-0">
-            <h3 className="m-4">Update User Details</h3>
+            <h1 style={{ fontSize: "20px", fontWeight: "500" }} className="ms-5 m-4">Update User Details</h1>
             <Container>
                 <ul style={{fontSize : "18px", listStyle: "none"}}>
                     <li className="mt-4 mb-3"> 
@@ -294,8 +294,8 @@ const UserInformation = () => {
 
                 <Modal show={showAlert} onHide={handleNotShowAlert} centered style={{height:"25%"}}>
                     <div class="alert alert-danger" role="alert" style={{marginBottom:"0px"}}>
-                        <h5 style={{fontSize:"15px", fontFamily:"sans-serif", marginBottom:"mb-5"}}>Please make sure the New Password matches the Confirm New Password.</h5>
-                        <Button className="ps-4 pe-4" variant="success" onClick={handleNotShowAlert}>Okay</Button>
+                        <h5 style={{fontSize:"15px", fontFamily:"sans-serif", marginBottom:"mb-5"}}>Warning: Your New Passwords do not match. Please try again.</h5>
+                        <Button className="ps-4 pe-4" variant="success" onClick={handleNotShowAlert}>Ok</Button>
                     </div>
                 </Modal>
             </Container>

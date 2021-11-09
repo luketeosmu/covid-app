@@ -50,8 +50,9 @@ class AuthenticationService {
         // return response.data;
       })
       .catch((err) => {
-        console.log(err);
-        throw err;
+        // console.log(err); //make this so 404 shows an alert (lol)
+        // throw err;
+        return "failed";
       });
   };
 

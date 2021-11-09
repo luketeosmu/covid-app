@@ -16,6 +16,20 @@ class EmployeeService {
             });
     }
 
+    getExpiredEmployees = async () => {
+        return axios
+            .get(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/expired`)
+            .then((response) => {
+                // console.log(localStorage.getItem("employees"));
+                localStorage.setItem("expiredEmployees", JSON.stringify(response.data));
+            })
+            .catch((err) => {
+                console.log(err);
+                // throw err;
+                return "failed";
+            });
+    }
+
     updateEmployee = async(employee) => {
         return axios
             .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees/${employee.id}`, employee)

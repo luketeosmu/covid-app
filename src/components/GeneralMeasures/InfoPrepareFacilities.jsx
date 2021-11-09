@@ -21,7 +21,7 @@ const InfoPrepareFacilities = () => {
 
                     <span>7. Set up one-way traffic flow for visitors to enter and exit the attraction, if reasonably practicable.<br/></span>
                     
-                    <span>8. For resumption of dining-in at F&B and indoor high-intensity activities where masks are not worn or where there is provision of common equipment, set-up and check the status of visitors as to whether they are fully vaccinated1 . Otherwise, F&B will only be allowed to operate take-away or delivery services, and indoor high-intensity activities where masks are not worn will not be allowed.<br/></span>
+                    <span>8. For resumption of dining-in at F&B and indoor high-intensity activities where masks are not worn or where there is provision of common equipment, set-up and check the status of visitors as to whether they are fully vaccinated . Otherwise, F&B will only be allowed to operate take-away or delivery services, and indoor high-intensity activities where masks are not worn will not be allowed.<br/></span>
                     </p>
                 <h3 id="InfoRideShowsTours" className="title-level3">Rides, Shows and Tours</h3>
                     <p>

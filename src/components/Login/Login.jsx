@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Modal, Alert } from "react-bootstrap";
 import "./Login.css";
 import { useHistory } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar";
@@ -27,11 +27,25 @@ export default function Login() {
 
         AuthenticationService.authenticate(user)
             .then((res) => {
-                history.push({
-                    pathname: "/",
-                });
+                if(res == "failed"){
+                    setShowAlert(true);
+                } else {
+                    history.push({
+                        pathname: "/",
+                    });
+                }
             });
     };
+
+    const[showAlert, setShowAlert] = useState(false);
+
+    const handleShowAlert = () => {
+        setShowAlert(true);
+    }
+
+    const handleNotShowAlert = () => {
+        setShowAlert(false);
+    }
 
     return (
         <div className="loginPage">
@@ -39,8 +53,10 @@ export default function Login() {
             
             <Container className="LoginPage mt-5">
                 <h1 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Welcome to &nbsp; <span style={{color:'green', marginTop: "0px"}}> COVID-TRACK </span>!</h1>
-                <Form>
-
+                <Alert style={{ width: "500px", margin: 'auto' }} show={showAlert} variant="danger" onClose={handleNotShowAlert}>
+                    <p className="mb-0">Your email or password is incorrect. Please try again.</p>
+                </Alert>
+                <Form className="mt-4">
                     <Form.Group controlId="email" style={{width:"500px", margin:'auto'}}>
                         <Form.Label>Email address</Form.Label>
                         <Form.Control autoFocus required name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}placeholder="Enter email" />

@@ -15,26 +15,34 @@ const FETTesting = () => {
     const [employees, setEmployees] = useState([]);
     const [count, setCount] = useState(0)
     
+    // useEffect(() => {
+    //     EmployeeService.getEmployees().then(() => {
+    //         setEmployees(JSON.parse(localStorage.getItem("employees")))
+    //     })
+    // }) //should just retrieve EXPIRED employees
+
     useEffect(() => {
-        EmployeeService.getEmployees().then(() => {
-            setEmployees(JSON.parse(localStorage.getItem("employees")))
+        EmployeeService.getExpiredEmployees().then(() => {
+            setEmployees(JSON.parse(localStorage.getItem("expiredEmployees")))
         })
     })
 
-    useEffect(() => {
-        for (var i = 0; i < employees.length; i++) {
-            var tempEmployee = employees[i];
-            if (new Date() > new Date(tempEmployee.fetDate)) {
-                let updatedEmployee = {
-                    id: tempEmployee.id,
-                    name: tempEmployee.name,
-                    vaxStatus: tempEmployee.vaxStatus,
-                    fetDate: new Date().toISOString().split('T')[0]
-                }
-                EmployeeService.updateEmployee(updatedEmployee);
-            }
-        }
-    },[])
+    // useEffect(() => {
+    //     for (var i = 0; i < employees.length; i++) {
+    //         var tempEmployee = employees[i];
+    //         if (new Date() > new Date(tempEmployee.fetDate)) {
+    //             let updatedEmployee = {
+    //                 id: tempEmployee.id,
+    //                 name: tempEmployee.name,
+    //                 vaxStatus: tempEmployee.vaxStatus,
+    //                 fetDate: new Date().toISOString().split('T')[0]
+    //             }
+    //             EmployeeService.updateEmployee(updatedEmployee);
+    //         }
+    //     }
+    // },[])
+    //change the above logic (or below one) to make it such that every time an employee is mark as tested
+    //it sets the date to TODAY's date + user.fetConfig, not the user's LAST tested date
 
     const [show, setShow] = useState(false);
     const[employee, setEmployee] = useState(null);
@@ -79,7 +87,7 @@ const FETTesting = () => {
     }
 
     const handleTested = () => {
-        let testDate = new Date(employee.fetDate);
+        let testDate = new Date();
         if(testDate.getDate() == new Date().getDate()){
             testDate.setDate(testDate.getDate() + AuthenticationService.getCurrentUser().fetConfig);
             let newEmployee = {
@@ -122,11 +130,11 @@ const FETTesting = () => {
                         <h6>Today: {new Date().toDateString()}</h6>
                     </div>
                     {employees
-                    .filter((employee) => {
-                        if(new Date(employee.fetDate).toDateString() == new Date().toDateString()){
-                            return employee;
-                        }
-                    })
+                    // .filter((employee) => {
+                    //     if(new Date(employee.fetDate).toDateString() == new Date().toDateString()){
+                    //         return employee;
+                    //     }
+                    // })
                     .map((employee) =>
                         <Card className="pe-4 ps-4 pt-2 pb-1">
                             <Card.Body className="text-start">
@@ -155,7 +163,7 @@ const FETTesting = () => {
                                         </svg></Button>
                                     </div>
                                 </div>
-                                <p style={{ fontSize: "11px" }}>(Last Tested: {employee.fetDate})
+                                <p style={{ fontSize: "11px" }}>(Scheduled Test: {employee.fetDate})
                                 </p>
                             </Card.Body>
                         </Card>
@@ -192,7 +200,7 @@ const FETTesting = () => {
                                 <Form.Label>Next FET Date (in X days)</Form.Label>
                                 <Form.Control
                                     type="number"
-                                    placeholder="e.g. 012345"
+                                    placeholder="e.g. 7"
                                     value={nextFETDate}
                                     onChange={(e) => setNextFETDate(e.target.value)}
                                     required
