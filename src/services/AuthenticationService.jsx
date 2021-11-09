@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const REGISTER_API_URL = "http://localhost:8080/users";
-const AUTH_API_URL = "http://localhost:8080/users/search";
+const REGISTER_API_URL = "http://3.138.201.28:8080/users";
+const AUTH_API_URL = "http://3.138.201.28:8080/users/search";
 
 class AuthenticationService {
   registerUser = async (user) => {
@@ -27,7 +27,7 @@ class AuthenticationService {
   registerBusiness = async (business) => { //somehow need to pull user from registerUser
     console.log(localStorage.getItem("tempPass"))
     return axios
-      .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
+      .post(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`,
         business,
         {
           auth: {
@@ -46,7 +46,7 @@ class AuthenticationService {
 
   getBusiness = async() => {
     return axios
-      .get(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`)
+      .get(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses`)
       .then((response) => {
         localStorage.setItem("business", JSON.stringify(response.data[0]))
       })
@@ -54,7 +54,7 @@ class AuthenticationService {
 
   updateBusiness = async(business) => {
     return axios
-      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses/${JSON.parse(localStorage.getItem("business"))}`, business)
+      .put(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}/businesses/${JSON.parse(localStorage.getItem("business")).businessId}`, business)
       .then((response) => {
         localStorage.setItem("business", JSON.stringify(response.data))
       })
@@ -77,7 +77,7 @@ class AuthenticationService {
 
   updateUser = async(user) => {
     return axios
-      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}`, user)
+      .put(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}`, user)
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         console.log(localStorage.getItem("user"))
@@ -91,7 +91,7 @@ class AuthenticationService {
     console.log(JSON.parse(localStorage.getItem("user")).username)
     console.log(oldPassword)
     return axios
-      .put(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/changePassword`, user,
+      .put(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}/changePassword`, user,
       {
         auth: {
           username: `${JSON.parse(localStorage.getItem("user")).username}`,
@@ -111,7 +111,7 @@ class AuthenticationService {
   deleteUser = async(inputPassword) => {
     console.log(JSON.parse(localStorage.getItem("user")).id)
     return axios
-      .delete(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}`,
+      .delete(`http://3.138.201.28:8080/users/${JSON.parse(localStorage.getItem("user")).id}`,
         {
           auth: {
             username: `${JSON.parse(localStorage.getItem("user")).username}`,
