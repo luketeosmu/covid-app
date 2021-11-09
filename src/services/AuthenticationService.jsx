@@ -17,6 +17,7 @@ class AuthenticationService {
       .catch((err) => {
         console.log(err);
         // this.signOut();
+        return "failed";
       });
   };
   //store user after registering, register business and use id from local storage
@@ -62,6 +63,9 @@ class AuthenticationService {
       .then((response) => {
         localStorage.setItem("user", JSON.stringify(response.data));
         console.log(localStorage.getItem("user"))
+      }) //'email' already exists
+      .catch((err) => {
+        return "duplicateEmail";
       })
   }
 
@@ -80,6 +84,9 @@ class AuthenticationService {
     .then((response) => {
       localStorage.setItem("user", JSON.stringify(response.data))
       console.log(localStorage.getItem("user"))
+    })
+    .catch((err) => {
+      return "wrongPassword"
     })
   }
 

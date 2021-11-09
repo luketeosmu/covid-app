@@ -53,7 +53,8 @@ class EmployeeService {
             .post(`http://localhost:8080/users/${JSON.parse(localStorage.getItem("user")).id}/employees`, employee)
             .catch((err) => {
                 console.log(err);
-                throw err;
+                // throw err;
+                return "failed";
             });
     }
 }

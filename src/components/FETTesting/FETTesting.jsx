@@ -13,36 +13,12 @@ const FETTesting = () => {
     // -> if employee is not checked at the end of the day: + 1 day to date
 
     const [employees, setEmployees] = useState([]);
-    const [count, setCount] = useState(0)
     
-    // useEffect(() => {
-    //     EmployeeService.getEmployees().then(() => {
-    //         setEmployees(JSON.parse(localStorage.getItem("employees")))
-    //     })
-    // }) //should just retrieve EXPIRED employees
-
     useEffect(() => {
         EmployeeService.getExpiredEmployees().then(() => {
             setEmployees(JSON.parse(localStorage.getItem("expiredEmployees")))
         })
     })
-
-    // useEffect(() => {
-    //     for (var i = 0; i < employees.length; i++) {
-    //         var tempEmployee = employees[i];
-    //         if (new Date() > new Date(tempEmployee.fetDate)) {
-    //             let updatedEmployee = {
-    //                 id: tempEmployee.id,
-    //                 name: tempEmployee.name,
-    //                 vaxStatus: tempEmployee.vaxStatus,
-    //                 fetDate: new Date().toISOString().split('T')[0]
-    //             }
-    //             EmployeeService.updateEmployee(updatedEmployee);
-    //         }
-    //     }
-    // },[])
-    //change the above logic (or below one) to make it such that every time an employee is mark as tested
-    //it sets the date to TODAY's date + user.fetConfig, not the user's LAST tested date
 
     const [show, setShow] = useState(false);
     const[employee, setEmployee] = useState(null);
@@ -63,18 +39,22 @@ const FETTesting = () => {
     }
 
     const handleSaveFETDate = () => {
-        let newUser = {
-            username: "dummy@gmail.com",
-            password: AuthenticationService.getCurrentUser().password,
-            firstName: AuthenticationService.getCurrentUser().firstName,
-            lastName: AuthenticationService.getCurrentUser().lastName,
-            authorities: "",
-            fetConfig: nextFETDate
-        }
+        if(nextFETDate < 1){
+            console.log("invalid input")
+        } else {
+            let newUser = {
+                username: "dummy@gmail.com",
+                password: AuthenticationService.getCurrentUser().password,
+                firstName: AuthenticationService.getCurrentUser().firstName,
+                lastName: AuthenticationService.getCurrentUser().lastName,
+                authorities: "",
+                fetConfig: nextFETDate
+            }
 
-        AuthenticationService.updateUser(newUser).then((res) => {
-            handleCloseFETDate();
-        })
+            AuthenticationService.updateUser(newUser).then((res) => {
+                handleCloseFETDate();
+            })
+        }
     }
 
     const handleClose = () => {
@@ -88,17 +68,16 @@ const FETTesting = () => {
 
     const handleTested = () => {
         let testDate = new Date();
-        if(testDate.getDate() == new Date().getDate()){
-            testDate.setDate(testDate.getDate() + AuthenticationService.getCurrentUser().fetConfig);
-            let newEmployee = {
-                id: employee.id,
-                name: employee.name,
-                vaxStatus: employee.vaxStatus,
-                fetDate: testDate.toISOString().split('T')[0]
-            }
-            EmployeeService.updateEmployee(newEmployee).then((res) => {
-                handleClose();
-            })
+        testDate.setDate(testDate.getDate() + AuthenticationService.getCurrentUser().fetConfig);
+        let newEmployee = {
+            id: employee.id,
+            name: employee.name,
+            vaxStatus: employee.vaxStatus,
+            fetDate: testDate.toISOString().split('T')[0]
+        }
+        EmployeeService.updateEmployee(newEmployee).then((res) => {
+            handleClose();
+        })
         // } else {
         //     // testDate.setDate(today.getDate());
         //     let newOldEmployee = {
@@ -109,7 +88,6 @@ const FETTesting = () => {
         //     }
         //     EmployeeService.updateEmployee(newOldEmployee).then(setTested(false))
         }
-    }
     return (
         <div className="fettesing">
             <NavBar />
@@ -135,7 +113,7 @@ const FETTesting = () => {
                     //         return employee;
                     //     }
                     // })
-                    .map((employee) =>
+                    .map((employee) => 
                         <Card className="pe-4 ps-4 pt-2 pb-1">
                             <Card.Body className="text-start">
                                 <div style={{display: "flex", justifyContent: "space-between"}}>
@@ -168,6 +146,9 @@ const FETTesting = () => {
                             </Card.Body>
                         </Card>
                     )}
+                    {employees.length == 0 &&
+                        <div className="mt-5" style={{ height: "50vh" }}> No Employees are Scheduled for Testing Today. Check Again Tomorrow!</div>
+                    }
                     <Modal show={show} onHide={handleClose} centered>
                         <Modal.Header className="justify-content-center">
                             <Modal.Title>Warning</Modal.Title>
@@ -183,21 +164,17 @@ const FETTesting = () => {
                             <Button onClick={handleTested} className="ps-4 pe-4" variant="success">Yes</Button>
                         </Modal.Footer>
                     </Modal>
-
-
-
-
                     <Modal show={showFETChange} onHide={handleCloseFETDate} centered>
                         <Modal.Header className="justify-content-center" closeButton>
                             <Modal.Title>Set Employee FET Date</Modal.Title>
                         </Modal.Header>
 
-                        <Modal.Body>
+                        <Modal.Body className="ms-5 me-5">
                             <Form className="ms-4 me-4" onSubmit={handleSubmit}>
                                 <Form.Group
                                 className="mb-3"
                                 >
-                                <Form.Label>Next FET Date (in X days)</Form.Label>
+                                <Form.Label>Next FET Date (currently set to <strong>{AuthenticationService.getCurrentUser().fetConfig}</strong> days)</Form.Label>
                                 <Form.Control
                                     type="number"
                                     placeholder="e.g. 7"
@@ -214,15 +191,11 @@ const FETTesting = () => {
                             <Button onClick={handleSaveFETDate} className="ps-4 pe-4" variant="success">Save</Button>
                         </Modal.Footer>
                     </Modal>
-
-
-
-
                 </Container>
             </Card>
             <Footer />
         </div>
     )
-}
+    }
 
 export default FETTesting

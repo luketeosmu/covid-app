@@ -35,9 +35,9 @@ const NavBar = () => {
               <NavDropdown.Item href="userdetails">
                 Manage Account
               </NavDropdown.Item>
-              <NavDropdown.Item href="#mbusiness">
+              {/* <NavDropdown.Item href="#mbusiness">
                 Manage Business
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               <NavDropdown.Divider />
               <NavDropdown.Item href="login" onClick={logOut}>Logout</NavDropdown.Item>
             </NavDropdown>
@@ -48,7 +48,7 @@ const NavBar = () => {
   ) : (
     <Navbar collapseOnSelect bg="light" variant="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">Covid App</Navbar.Brand>
+        <Navbar.Brand href="/">COVID-TRACK</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

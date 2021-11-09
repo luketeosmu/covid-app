@@ -68,6 +68,7 @@ const NewsApi = () => {
                 </div>
 
                 <div className='m-3 mb-0'>
+                    <a href = {data.articles[0].url}>
                     <h2 
                     style={{
                         textTransform: 'uppercase',
@@ -76,7 +77,7 @@ const NewsApi = () => {
                     }}>
                         {data.articles[0].title}
                     </h2>
-
+                    </a>
                     <p style={{color:'#708090'}}>Description: {data.articles[0].description} (continue reading ...)</p>
                 </div>
             </div>
@@ -100,6 +101,7 @@ const NewsApi = () => {
                 </div>
 
                 <div className='m-3 mb-0'>
+                    <a href = {data.articles[1].url}>
                     <h2 
                     style={{
                         textTransform: 'uppercase',
@@ -108,7 +110,7 @@ const NewsApi = () => {
                     }}>
                         {data.articles[1].title}
                     </h2>
-
+                    </a>
                     <p style={{color:'#708090'}}>Description: {data.articles[1].description} (continue reading ...)</p>
                 </div>
             </div>
@@ -132,6 +134,7 @@ const NewsApi = () => {
                 </div>
 
                 <div className='m-3 mb-0'>
+                    <a href = {data.articles[2].url}>
                     <h2 
                     style={{
                         textTransform: 'uppercase',
@@ -140,7 +143,7 @@ const NewsApi = () => {
                     }}>
                         {data.articles[2].title}
                     </h2>
-
+                    </a>
                     <p style={{color:'#708090'}}>Description: {data.articles[2].description} (continue reading ...)</p>
                 </div>
             </div>
@@ -164,6 +167,7 @@ const NewsApi = () => {
                 </div>
 
                 <div className='m-3 mb-0'>
+                    <a href = {data.articles[3].url}>
                     <h2 
                     style={{
                         textTransform: 'uppercase',
@@ -172,7 +176,7 @@ const NewsApi = () => {
                     }}>
                         {data.articles[3].title}
                     </h2>
-
+                    </a>
                     <p style={{color:'#708090'}}>Description: {data.articles[3].description} (continue reading ...)</p>
                 </div>
             </div>
@@ -196,6 +200,7 @@ const NewsApi = () => {
                 </div>
 
                 <div className='m-3 mb-0'>
+                    <a href = {data.articles[4].url}>
                     <h2 
                     style={{
                         textTransform: 'uppercase',
@@ -204,14 +209,14 @@ const NewsApi = () => {
                     }}>
                         {data.articles[4].title}
                     </h2>
-
+                    </a>
                     <p style={{color:'#708090'}}>Description: {data.articles[4].description} (continue reading ...)</p>
                 </div>
             </div>
             }
 
             { data.totalResults == 0 &&
-                <div style={{color: "red", height: "50vh"}}> No covid-19 news at the moments :) </div>
+                <div style={{color: "red", height: "50vh"}}> No COVID-19 news at the moment :) </div>
             }
             </Container>
         </div>

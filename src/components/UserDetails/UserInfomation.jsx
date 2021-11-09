@@ -1,4 +1,4 @@
-import { Container, Modal, Button, Form } from 'react-bootstrap';
+import { Container, Modal, Button, Form, Alert } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import AuthenticationService from '../../services/AuthenticationService';
 
@@ -23,6 +23,8 @@ const UserInformation = () => {
 
     const [showForm, setForm] = useState(false)
     const [showAlert, setAlert] = useState(false)
+    const [showWrongPass, setShowWrongPass] = useState(false)
+    const [showDupEmail, setShowDupEmail] = useState(false)
 
     const handleShowForm = () => {
         setForm(true);
@@ -106,8 +108,12 @@ const UserInformation = () => {
 
         AuthenticationService.updateUser(newUser)
             .then((res) => {
-                console.log(res);
-                handleCloseEmailForm();
+                if(res == "duplicateEmail"){
+                    handleShowDupEmail();
+                } else {
+                    console.log(res); //alert handling
+                    handleCloseEmailForm();
+                }
             })
     }
 
@@ -127,8 +133,12 @@ const UserInformation = () => {
 
         AuthenticationService.updateUserPassword(newUser, oldPassword)
             .then ((res) => {
-                console.log(res);
-                handleCloseForm();
+                if(res == "wrongPassword"){
+                    handleShowWrongPass();
+                } else {
+                    console.log(res);
+                    handleCloseForm();
+                }
             })
     }
 
@@ -144,9 +154,22 @@ const UserInformation = () => {
     const handleShowAlert = () => {
         setAlert(true);
     }
-
     const handleNotShowAlert = () => {
         setAlert(false);
+    }
+
+    const handleShowWrongPass = () => {
+        setShowWrongPass(true)
+    }
+    const handleNotShowWrongPass = () => {
+        setShowWrongPass(false);
+    }
+
+    const handleShowDupEmail = () => {
+        setShowDupEmail(true);
+    }
+    const handleNotShowDupEmail = () => {
+        setShowDupEmail(false);
     }
 
 
@@ -194,7 +217,9 @@ const UserInformation = () => {
                     <Modal.Header className="justify-content-center">
                         <Modal.Title>Update Password</Modal.Title>
                     </Modal.Header>
-
+                    <Alert style={{ width: "500px", margin: 'auto' }} show={showWrongPass} variant="danger" onClose={handleNotShowWrongPass}>
+                        <p className="mb-0">The password you entered is incorrect. Please try again.</p>
+                    </Alert>
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3">
@@ -277,6 +302,9 @@ const UserInformation = () => {
                     <Modal.Header className="justify-content-center">
                         <Modal.Title>Update Email</Modal.Title>
                     </Modal.Header>
+                    <Alert style={{ width: "500px", margin: 'auto' }} show={showDupEmail} variant="danger" onClose={handleNotShowDupEmail}>
+                        <p className="mb-0">The email you entered already exists. Please try again.</p>
+                    </Alert>
                     <Modal.Body>
                         <Form>
                             <Form.Group className="mb-3">

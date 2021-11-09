@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PrivateRoute } from "./util/PrivateRoute";
 import './App.css';
 import Login from "./components/Login/Login.jsx"
 import RegisterUser from './components/Registration/RegisterUser';
@@ -31,13 +32,13 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path='/register' exact component={RegisterUser}/>
         <Route path='/businessform' exact component={RegisterBusiness} />
-        <Route path='/employees' exact component={EmployeeList}/>
+        <PrivateRoute path='/employees' exact component={EmployeeList}/>
         <Route path='/forgotpassword' exact component={ForgotPassword}/>
         <Route path = "/news" exact component = {NewsMainPage}/>
         <Route path = "/covidmeasures" exact component = {GeneralMeasures}/>
-        <Route path = "/userdetails" exact component = {UserDetails}/>
-        <Route path = "/fettest" exact component = {FETTesting}/>
-        <Route path = '/testingnewsapi' exact component = {NewsApi}/>
+        <PrivateRoute path = "/userdetails" exact component = {UserDetails}/>
+        <PrivateRoute path = "/fettest" exact component = {FETTesting}/>
+        <PrivateRoute path = '/testingnewsapi' exact component = {NewsApi}/>
       </Switch>
     </Router>
   );
