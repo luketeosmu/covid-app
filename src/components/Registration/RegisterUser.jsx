@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router'
 import NavBar from '../NavBar/NavBar'
-import { Card, Container, Row, Form, Col, Button, Alert } from 'react-bootstrap'
+import { Card, Container, Row, Form, Col, Button, Modal, Alert} from 'react-bootstrap'
 import AuthenticationService from '../../services/AuthenticationService'
 
 const RegisterUser = () => {
@@ -9,9 +9,29 @@ const RegisterUser = () => {
     const [email, setEmail] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [password, setPassword] = useState("");
-    // const [confirmPassword, setConfirmPassword] = useState("");
 
+    const [showPasswordAlert, setPasswordAlert] = useState(false);
+    
+
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const handleShowPasswordAlert = () => {
+        setPasswordAlert(true);
+    }
+
+    const handleNotShowPasswordAlert = () => {
+        setPasswordAlert(false);
+    }
+
+    const handleVerifyNewPassword = (e) => {
+        if(password !== confirmPassword) {
+            handleShowPasswordAlert();
+        } else {
+            register(e);
+        }
+    }
+
+   
     const [showAlert, setShowAlert] = useState(false);
 
     const handleShowAlert = () => {
@@ -75,21 +95,32 @@ const RegisterUser = () => {
 
                         <Form.Group className="mb-3">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control required value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter your password... (min. 8 characters)" />
+                            <Form.Control 
+                                required value={password} 
+                                onChange={(e) => setPassword(e.target.value)} 
+                                type="password" placeholder="Enter your password... (min. 8 characters)" />
                         </Form.Group>
 
                         <Form.Group className="mb-3">
                             <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control required type="password" placeholder="Enter your password... (min. 8 characters)" />
+                            <Form.Control required value={confirmPassword} 
+                                onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="Enter your password... (min. 8 characters)" />
                         </Form.Group>
 
-                        <Button onClick={register} className="mt-4 float-end" variant="success" type="submit">
+                        <Button onClick={handleVerifyNewPassword} className="mt-4 float-end" variant="success">
                             Next <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
                             </svg>
                         </Button>
                     </Form>
                 </Card>
+
+                <Modal show={showPasswordAlert} onHide={handleNotShowPasswordAlert} centered style={{height:"25%"}}>
+                    <div class="alert alert-danger" role="alert" style={{marginBottom:"0px"}}>
+                        <h5 style={{fontSize:"15px", fontFamily:"sans-serif", marginBottom:"mb-5"}}>Warning: Your New Passwords do not match. Please try again.</h5>
+                        <Button className="ps-4 pe-4" variant="success" onClick={handleNotShowPasswordAlert}>Ok</Button>
+                    </div>
+                </Modal>
             </Container>
         </div>
     )
