@@ -8,7 +8,7 @@ import { Container } from 'react-bootstrap'
 
 const NewsApi = () => {
     const apiKey = 'e3ef7f19b9e1e5d1f32a672d13689887';
-    const baseURL = `https://gnews.io/api/v4/search?q=covid&country=sg&token=${apiKey}=${apiKey}`;
+    const baseURL = `https://gnews.io/api/v4/search?q=covid&country=sg&token=${apiKey}`;
     const [data, setData] = useState(null);
     const [error, setError] = React.useState(null);
 
