@@ -9,7 +9,7 @@ function NewsArticle({ data }) {
       <img src = {data.urlToImage} style = {{height: "10%"}}/>
         </a> */}
           <img
-            src={data.urlToImage}
+            src={data.image}
             style={{
               height: "200px",
               width: "350px",
