@@ -9,8 +9,7 @@ import {
   Tooltip,
   OverlayTrigger,
   Modal,
-  Row,
-  Col,
+  Alert,
 } from "react-bootstrap";
 import "./EmployeeList.css";
 import NavBar from "../../NavBar/NavBar";
@@ -39,6 +38,16 @@ const EmployeeList = () => {
     return employeeId !== 0 && employeeName.length > 0;
   }
 
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  }
+
+  const handleNotShowAlert = () => {
+    setShowAlert(false);
+  }
+
   const addEmployee = (e) => {
     e.preventDefault();
     let employee = {
@@ -51,10 +60,11 @@ const EmployeeList = () => {
 
     EmployeeService.addEmployee(employee)
       .then((res) => {
-        // history.push({
-        //   pathname: "/businessform",
-        // });
-        handleClose();
+        if(res == "failed"){
+          handleShowAlert()
+        } else {
+          handleClose();
+        }
       });
   };
 
@@ -236,6 +246,9 @@ const EmployeeList = () => {
               <Modal.Title className="ms-4">Add New Employee</Modal.Title>
               {/* <CloseButton /> doesnt work */}
             </Modal.Header>
+            <Alert style={{ width: "500px", margin: 'auto' }} show={showAlert} variant="danger" onClose={handleNotShowAlert}>
+              <p className="mb-0">One or more of your fields are incorrect. Please try again.</p>
+            </Alert>
             <Modal.Body>
               <Form className="ms-4 me-4" onSubmit={handleSubmit}>
                 <Form.Group

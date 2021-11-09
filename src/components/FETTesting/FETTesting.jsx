@@ -39,18 +39,22 @@ const FETTesting = () => {
     }
 
     const handleSaveFETDate = () => {
-        let newUser = {
-            username: "dummy@gmail.com",
-            password: AuthenticationService.getCurrentUser().password,
-            firstName: AuthenticationService.getCurrentUser().firstName,
-            lastName: AuthenticationService.getCurrentUser().lastName,
-            authorities: "",
-            fetConfig: nextFETDate
-        }
+        if(nextFETDate < 1){
+            console.log("invalid input")
+        } else {
+            let newUser = {
+                username: "dummy@gmail.com",
+                password: AuthenticationService.getCurrentUser().password,
+                firstName: AuthenticationService.getCurrentUser().firstName,
+                lastName: AuthenticationService.getCurrentUser().lastName,
+                authorities: "",
+                fetConfig: nextFETDate
+            }
 
-        AuthenticationService.updateUser(newUser).then((res) => {
-            handleCloseFETDate();
-        })
+            AuthenticationService.updateUser(newUser).then((res) => {
+                handleCloseFETDate();
+            })
+        }
     }
 
     const handleClose = () => {
@@ -143,7 +147,7 @@ const FETTesting = () => {
                         </Card>
                     )}
                     {employees.length == 0 &&
-                        <div style={{ height: "50vh" }}> No Employees are Scheduled for Testing Today. Check Again Tomorrow!</div>
+                        <div className="mt-5" style={{ height: "50vh" }}> No Employees are Scheduled for Testing Today. Check Again Tomorrow!</div>
                     }
                     <Modal show={show} onHide={handleClose} centered>
                         <Modal.Header className="justify-content-center">
@@ -165,12 +169,12 @@ const FETTesting = () => {
                             <Modal.Title>Set Employee FET Date</Modal.Title>
                         </Modal.Header>
 
-                        <Modal.Body>
+                        <Modal.Body className="ms-5 me-5">
                             <Form className="ms-4 me-4" onSubmit={handleSubmit}>
                                 <Form.Group
                                 className="mb-3"
                                 >
-                                <Form.Label>Next FET Date (in X days)</Form.Label>
+                                <Form.Label>Next FET Date (currently set to <strong>{AuthenticationService.getCurrentUser().fetConfig}</strong> days)</Form.Label>
                                 <Form.Control
                                     type="number"
                                     placeholder="e.g. 7"

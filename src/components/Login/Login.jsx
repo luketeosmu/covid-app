@@ -28,7 +28,7 @@ export default function Login() {
         AuthenticationService.authenticate(user)
             .then((res) => {
                 if(res == "failed"){
-                    setShowAlert(true);
+                    handleShowAlert();
                 } else {
                     history.push({
                         pathname: "/",

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useHistory } from 'react-router'
 import NavBar from '../NavBar/NavBar'
-import { Card, Container, Row, Form, Col, Button } from 'react-bootstrap'
+import { Card, Container, Row, Form, Col, Button, Alert } from 'react-bootstrap'
 import AuthenticationService from '../../services/AuthenticationService'
 
 const RegisterUser = () => {
@@ -11,6 +11,16 @@ const RegisterUser = () => {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     // const [confirmPassword, setConfirmPassword] = useState("");
+
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleShowAlert = () => {
+        setShowAlert(true);
+    }
+
+    const handleNotShowAlert = () => {
+        setShowAlert(false);
+    }
 
     const register = (e) => {
         e.preventDefault();
@@ -25,9 +35,13 @@ const RegisterUser = () => {
 
         AuthenticationService.registerUser(user)
             .then((res) => {
-                history.push({
-                    pathname: "/businessform",
-                });
+                if(res == "failed"){
+                    handleShowAlert();
+                } else {
+                    history.push({
+                        pathname: "/businessform",
+                    });
+                }
             });
     };
 
@@ -38,6 +52,9 @@ const RegisterUser = () => {
             <Container>
                 <Card className="p-5" style={{marginTop: "40px"}}>
                     <h2 className="d-flex justify-content-center mb-4" style={{fontSize:'25px'}}>Let's set up your user account!</h2>
+                    <Alert className="mb-4" style={{ width: "600px", margin: 'auto' }} show={showAlert} variant="danger" onClose={handleNotShowAlert}>
+                        <p className="mb-0">One or more fields have been entered incorrectly. Please try again.</p>
+                    </Alert>
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Email Address</Form.Label>
