@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap'
 const NewsApi = () => {
     const apiKey = 'e3ef7f19b9e1e5d1f32a672d13689887';
     const baseURL = `https://gnews.io/api/v4/search?q=covid&country=sg&token=${apiKey}`;
-    const [data, setData] = useState(null);
+    const [data, setData] = useState();
     const [error, setError] = React.useState(null);
 
     useEffect(() => {
@@ -22,10 +22,12 @@ const NewsApi = () => {
 
     useEffect(() => {
         axios
-        .get(baseURL).then((response) => {
+        .get(baseURL)
+        .then((response) => {
             setData(response.data);
+            // console.log(data.articles.length)
         })
-        .catch(error => {
+        .catch((error) => {
             setError(error);
         });
     }, []);
@@ -36,7 +38,7 @@ const NewsApi = () => {
     return (
         <div className="news-api">
             <Container >
-            <h1 className='title'
+            <h1 className="title"
             style={{
                 color:'white', 
                 fontWeight:'800', 
@@ -50,7 +52,7 @@ const NewsApi = () => {
                 LATEST COVID-19 NEWS - SINGAPORE
             </h1>
 
-            { data.totalResults > 0 &&
+            { data.articles.length > 0 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -83,7 +85,7 @@ const NewsApi = () => {
             </div>
             }
 
-            {data.totalResults > 1 &&
+            {data.articles.length > 1 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -116,7 +118,7 @@ const NewsApi = () => {
             </div>
             }
 
-            {data.totalResults > 2 &&
+            {data.articles.length > 2 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -149,7 +151,7 @@ const NewsApi = () => {
             </div>
             }
 
-            {data.totalResults > 3 &&
+            {data.articles.length > 3 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -182,7 +184,7 @@ const NewsApi = () => {
             </div>
             }
 
-            {data.totalResults > 4 &&
+            {data.articles.length > 4 &&
             <div className='news' style={{display:'flex', margin: '20px auto',  alignItems: 'center'}}>
                 <div 
                 style={{
@@ -215,7 +217,7 @@ const NewsApi = () => {
             </div>
             }
 
-            { data.totalResults == 0 &&
+            { data.articles.length == 0 &&
                 <div style={{color: "red", height: "50vh"}}> No COVID-19 news at the moment :) </div>
             }
             </Container>
@@ -223,5 +225,6 @@ const NewsApi = () => {
         
     );
 }
+
  
 export default NewsApi;
