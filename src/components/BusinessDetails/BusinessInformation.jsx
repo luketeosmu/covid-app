@@ -20,7 +20,7 @@ const BusinessInformation = () => {
 
     const [newBusinessName, setNewBusinessName] = useState("")
     const [newCategory, setNewCategory] = useState("")
-    const [newOutdoorIndoor, setNewOutdoorIndoor] = useState("")
+    const [newOutdoorIndoor, setNewOutdoorIndoor] = useState("i")
     const [newCapacity, setNewCapacity] = useState(0)
 
     const [newBusinessNameForm, setNewBusinessNameForm] = useState(false)
