@@ -7,7 +7,7 @@ import WebFont from 'webfontloader';
 import { Container } from 'react-bootstrap'
 
 const NewsApi = () => {
-    const apiKey = 'e3ef7f19b9e1e5d1f32a672d13689887';
+    const apiKey = '283b02abe7893c67a629f317869faae3';
     const baseURL = `https://gnews.io/api/v4/search?q=covid&country=sg&token=${apiKey}`;
     const [data, setData] = useState();
     const [error, setError] = React.useState(null);
